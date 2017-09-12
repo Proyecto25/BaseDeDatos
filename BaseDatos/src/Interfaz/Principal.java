@@ -1,22 +1,23 @@
 package Interfaz;
 
-import java.beans.PropertyVetoException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.beans.PropertyVetoException;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 
 public class Principal extends javax.swing.JFrame {
     
     public Principal() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
-        MenuPrincipal m = new MenuPrincipal();
+        /*MenuPrincipal m = new MenuPrincipal();
         DesktopPane.add(m);
+        
         m.show();
         try {
             m.setMaximum(true);
         } catch (PropertyVetoException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         
     }
 

@@ -1,12 +1,31 @@
 package Interfaz;
 
 import java.awt.Color;
+import ConexionBaseDatos.Conexion;
+import com.sun.awt.AWTUtilities;
+
+import java.awt.Shape;
+import java.awt.geom.RoundRectangle2D;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
-
-    public Login() {
+    int x,y;
+    String ID;
+    int IntID;   
+    Connection con = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    MenuPrincipal pantalla;
+    String PASS_CRYPTO;
+    public Login() {     
+        
+        this.setUndecorated(true);
         initComponents();
-        setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
+        Shape forma = new RoundRectangle2D.Double(0,0,this.getBounds().width,this.getBounds().height,27,27);
+        AWTUtilities.setWindowShape(this, forma);
+        con = Conexion.ConnecrDb();
     }
 
     @SuppressWarnings("unchecked")
@@ -208,9 +227,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-        Principal v2 = new Principal();
-        v2.setVisible(true);
-        this.dispose();
+        ingresarDatos();
     }//GEN-LAST:event_btnEntrarMouseClicked
 
     private void lblOlvidarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOlvidarMouseEntered
@@ -245,6 +262,28 @@ public class Login extends javax.swing.JFrame {
         this.lblUser.setBackground(new Color(48,57,74));
     }//GEN-LAST:event_lblUserMouseExited
 
+        void ingresarDatos(){
+        //PASS_CRYPTO=DigestUtils.instance().md5(pass);
+        String sql ="select * from Usuario where Usuario = ? and Contraseña = ?";
+        try{        
+            pst = con.prepareStatement(sql);
+            pst.setString(1, txtUsuario.getText());
+            pst.setString(2, txtContra.getText());            
+            rs=pst.executeQuery();           
+            if (rs.next()){
+            ID = rs.getString("ID");
+            IntID = Integer.parseInt(ID);
+            JOptionPane.showMessageDialog(null, "Nombre y Contraseña Correctos");
+            pantalla = new MenuPrincipal(IntID);
+            pantalla.setLocationRelativeTo(null);
+            pantalla.setVisible(true);
+            }else
+                JOptionPane.showMessageDialog(null,"Nombre o Contraseña inCorrectos");
+                this.dispose();
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);      
+        }     
+    }
     /**
      * @param args the command line arguments
      */
