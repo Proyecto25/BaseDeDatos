@@ -1,23 +1,25 @@
 package Interfaz;
 
+import ConexionBaseDatos.Conexion;
 import java.beans.PropertyVetoException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.Connection;
 
 public class Principal extends javax.swing.JFrame {
-    
+    Conexion conn = new Conexion();
+    Connection con;
+    int ID;
+    MenuPrincipal m = new MenuPrincipal();
     public Principal() {
         initComponents();
+        //this.ID = a;
         this.setExtendedState(MAXIMIZED_BOTH);
-        MenuPrincipal m = new MenuPrincipal();
-        DesktopPane.add(m);
-        m.show();
-        try {
-            m.setMaximum(true);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.DesktopPane.add(m);
+        this.m.setVisible(true);
         
+        try {  
+            this.m.setMaximum(true);
+        }catch(PropertyVetoException e) {}
+        this.m.show();
     }
 
     /**
@@ -50,7 +52,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DesktopPane)
+            .addComponent(DesktopPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

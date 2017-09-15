@@ -1,15 +1,54 @@
 package Interfaz;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 public class MenuPrincipal extends javax.swing.JInternalFrame {
     
     public MenuPrincipal() {
         initComponents();
-        //ocultarBarra();
         ((BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        btnPagos.setSize(170, 110);
+        btnEmpleados.setSize(170, 110);
+        btnTraslados.setSize(170, 110);
+        btnInventario.setSize(170, 110);
+        btnVehiculos.setSize(170, 110);
+        ImageIcon imagen[] = new ImageIcon[5];
+        imagen[0] = new ImageIcon("src/Imagenes/05.icono_btn_pagos.png");
+        imagen[1] = new ImageIcon("src/Imagenes/06.icono_btn_empleados.png");
+        imagen[2] = new ImageIcon("src/Imagenes/07.icono_btn_traslados.png");
+        imagen[3] = new ImageIcon("src/Imagenes/08.icono_btn_inventario.png");
+        imagen[4] = new ImageIcon("src/Imagenes/09.icono_btn_vehiculos.png");
+        escalarImagen(btnPagos, imagen[0]);
+        escalarImagen(btnEmpleados, imagen[1]);
+        escalarImagen(btnTraslados, imagen[2]);
+        escalarImagen(btnInventario, imagen[3]);
+        escalarImagen(btnVehiculos, imagen[4]);
+    }
+    private void escalarImagen(JButton btn, ImageIcon img){
+        //se recibe la imagen en un Image
+        Image imagen = img.getImage();
+        //ahora se realiza la parte principal de este video que es adaptar el tamaño de la imagen a nuestro label
+        Image nuevaimagen = imagen.getScaledInstance(btn.getWidth(), btn.getHeight(), Image.SCALE_SMOOTH);
+        //finalmente le adicinamos la imagen dentro del label
+        btn.setIcon(new ImageIcon(nuevaimagen));
     }
     
+    //Funcion para escalar imagen reduciendo un 5%
+    private void escalarImagen2(JButton btn, ImageIcon img){
+        //se recibe la imagen en un Image
+        Image imagen = img.getImage();
+        int ancho = btn.getWidth();
+        int alto = btn.getHeight();
+        ancho = (ancho*95)/100;
+        alto = (alto*95)/100;
+        //ahora se realiza la parte principal de este video que es adaptar el tamaño de la imagen a nuestro label
+        Image nuevaimagen = imagen.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+        //finalmente le adicinamos la imagen dentro del label
+        btn.setIcon(new ImageIcon(nuevaimagen));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -19,23 +58,209 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        escritorio = new javax.swing.JDesktopPane();
+        panelOpciones1 = new javax.swing.JPanel();
+        panelOpciones2 = new javax.swing.JPanel();
+        btnPagos = new javax.swing.JButton();
+        btnEmpleados = new javax.swing.JButton();
+        btnTraslados = new javax.swing.JButton();
+        btnInventario = new javax.swing.JButton();
+        btnVehiculos = new javax.swing.JButton();
         barra_menu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
-        setBorder(null);
-        setResizable(true);
-        setAlignmentX(0.0F);
-        setAlignmentY(0.0F);
-        setOpaque(true);
-        setVisible(true);
+        jLabel1.setText("jLabel1");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/01.icono_usuario2.png"))); // NOI18N
-        jButton1.setAlignmentY(0.0F);
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
+        setBackground(new java.awt.Color(48, 57, 74));
+        setBorder(null);
+        setMinimumSize(new java.awt.Dimension(545, 465));
+        setPreferredSize(new java.awt.Dimension(545, 465));
+        setVisible(true);
+        getContentPane().setLayout(new java.awt.GridLayout(1, 1));
+
+        escritorio.setOpaque(false);
+        escritorio.setPreferredSize(new java.awt.Dimension(545, 438));
+
+        panelOpciones1.setBackground(new java.awt.Color(71, 80, 98));
+        panelOpciones1.setMinimumSize(new java.awt.Dimension(485, 91));
+
+        javax.swing.GroupLayout panelOpciones1Layout = new javax.swing.GroupLayout(panelOpciones1);
+        panelOpciones1.setLayout(panelOpciones1Layout);
+        panelOpciones1Layout.setHorizontalGroup(
+            panelOpciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelOpciones1Layout.setVerticalGroup(
+            panelOpciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 91, Short.MAX_VALUE)
+        );
+
+        panelOpciones2.setBackground(new java.awt.Color(71, 80, 98));
+        panelOpciones2.setLayout(new java.awt.GridLayout(2, 3));
+
+        btnPagos.setBackground(new java.awt.Color(54, 68, 97));
+        btnPagos.setBorder(null);
+        btnPagos.setBorderPainted(false);
+        btnPagos.setContentAreaFilled(false);
+        btnPagos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPagos.setFocusPainted(false);
+        btnPagos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPagos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPagosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPagosMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnPagosMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnPagosMouseReleased(evt);
+            }
+        });
+        btnPagos.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                btnPagosComponentResized(evt);
+            }
+        });
+        panelOpciones2.add(btnPagos);
+
+        btnEmpleados.setBackground(new java.awt.Color(54, 68, 97));
+        btnEmpleados.setBorder(null);
+        btnEmpleados.setBorderPainted(false);
+        btnEmpleados.setContentAreaFilled(false);
+        btnEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEmpleados.setFocusPainted(false);
+        btnEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEmpleadosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEmpleadosMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEmpleadosMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEmpleadosMouseReleased(evt);
+            }
+        });
+        btnEmpleados.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                btnEmpleadosComponentResized(evt);
+            }
+        });
+        panelOpciones2.add(btnEmpleados);
+
+        btnTraslados.setBackground(new java.awt.Color(54, 68, 97));
+        btnTraslados.setBorder(null);
+        btnTraslados.setBorderPainted(false);
+        btnTraslados.setContentAreaFilled(false);
+        btnTraslados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTraslados.setFocusPainted(false);
+        btnTraslados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnTrasladosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnTrasladosMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnTrasladosMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnTrasladosMouseReleased(evt);
+            }
+        });
+        btnTraslados.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                btnTrasladosComponentResized(evt);
+            }
+        });
+        panelOpciones2.add(btnTraslados);
+
+        btnInventario.setBackground(new java.awt.Color(54, 68, 97));
+        btnInventario.setBorder(null);
+        btnInventario.setBorderPainted(false);
+        btnInventario.setContentAreaFilled(false);
+        btnInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInventario.setFocusPainted(false);
+        btnInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnInventarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnInventarioMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnInventarioMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnInventarioMouseReleased(evt);
+            }
+        });
+        btnInventario.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                btnInventarioComponentResized(evt);
+            }
+        });
+        panelOpciones2.add(btnInventario);
+
+        btnVehiculos.setBackground(new java.awt.Color(54, 68, 97));
+        btnVehiculos.setBorder(null);
+        btnVehiculos.setBorderPainted(false);
+        btnVehiculos.setContentAreaFilled(false);
+        btnVehiculos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVehiculos.setFocusPainted(false);
+        btnVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVehiculosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVehiculosMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnVehiculosMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnVehiculosMouseReleased(evt);
+            }
+        });
+        btnVehiculos.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                btnVehiculosComponentResized(evt);
+            }
+        });
+        panelOpciones2.add(btnVehiculos);
+
+        escritorio.setLayer(panelOpciones1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        escritorio.setLayer(panelOpciones2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelOpciones1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelOpciones2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(panelOpciones1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(panelOpciones2, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(escritorio);
 
         jMenu1.setText("File");
         barra_menu.add(jMenu1);
@@ -45,31 +270,122 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
 
         setJMenuBar(barra_menu);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jButton1)
-                .addContainerGap(521, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jButton1)
-                .addContainerGap(247, Short.MAX_VALUE))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPagosComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_btnPagosComponentResized
+        escalarImagen(btnPagos,new ImageIcon("src/Imagenes/05.icono_btn_pagos.png"));
+    }//GEN-LAST:event_btnPagosComponentResized
+
+    private void btnEmpleadosComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_btnEmpleadosComponentResized
+        escalarImagen(btnEmpleados,new ImageIcon("src/Imagenes/06.icono_btn_empleados.png"));
+    }//GEN-LAST:event_btnEmpleadosComponentResized
+
+    private void btnPagosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPagosMouseEntered
+        escalarImagen2(btnPagos,new ImageIcon("src/Imagenes/05.icono_btn_pagos.png"));
+    }//GEN-LAST:event_btnPagosMouseEntered
+
+    private void btnPagosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPagosMouseExited
+        escalarImagen(btnPagos,new ImageIcon("src/Imagenes/05.icono_btn_pagos.png"));
+    }//GEN-LAST:event_btnPagosMouseExited
+
+    private void btnPagosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPagosMousePressed
+        this.btnPagos.setOpaque(true);
+    }//GEN-LAST:event_btnPagosMousePressed
+
+    private void btnPagosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPagosMouseReleased
+        this.btnPagos.setOpaque(false);
+    }//GEN-LAST:event_btnPagosMouseReleased
+
+    private void btnEmpleadosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosMouseEntered
+        escalarImagen2(btnEmpleados,new ImageIcon("src/Imagenes/06.icono_btn_empleados.png"));
+    }//GEN-LAST:event_btnEmpleadosMouseEntered
+
+    private void btnEmpleadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosMouseExited
+       escalarImagen(btnEmpleados,new ImageIcon("src/Imagenes/06.icono_btn_empleados.png"));
+    }//GEN-LAST:event_btnEmpleadosMouseExited
+
+    private void btnEmpleadosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosMousePressed
+        this.btnEmpleados.setOpaque(true);
+    }//GEN-LAST:event_btnEmpleadosMousePressed
+
+    private void btnEmpleadosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmpleadosMouseReleased
+        this.btnEmpleados.setOpaque(false);
+    }//GEN-LAST:event_btnEmpleadosMouseReleased
+
+    private void btnTrasladosComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_btnTrasladosComponentResized
+        escalarImagen(btnTraslados,new ImageIcon("src/Imagenes/07.icono_btn_traslados.png"));
+    }//GEN-LAST:event_btnTrasladosComponentResized
+
+    private void btnTrasladosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrasladosMouseEntered
+        escalarImagen2(btnTraslados,new ImageIcon("src/Imagenes/07.icono_btn_traslados.png"));
+    }//GEN-LAST:event_btnTrasladosMouseEntered
+
+    private void btnTrasladosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrasladosMouseExited
+        escalarImagen(btnTraslados,new ImageIcon("src/Imagenes/07.icono_btn_traslados.png"));
+    }//GEN-LAST:event_btnTrasladosMouseExited
+
+    private void btnTrasladosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrasladosMousePressed
+        this.btnTraslados.setOpaque(true);
+    }//GEN-LAST:event_btnTrasladosMousePressed
+
+    private void btnTrasladosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrasladosMouseReleased
+        this.btnTraslados.setOpaque(false);
+    }//GEN-LAST:event_btnTrasladosMouseReleased
+
+    private void btnInventarioComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_btnInventarioComponentResized
+        escalarImagen(btnInventario,new ImageIcon("src/Imagenes/08.icono_btn_inventario.png"));
+    }//GEN-LAST:event_btnInventarioComponentResized
+
+    private void btnInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseEntered
+        escalarImagen2(btnInventario,new ImageIcon("src/Imagenes/08.icono_btn_inventario.png"));
+    }//GEN-LAST:event_btnInventarioMouseEntered
+
+    private void btnInventarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseExited
+        escalarImagen(btnInventario,new ImageIcon("src/Imagenes/08.icono_btn_inventario.png"));
+    }//GEN-LAST:event_btnInventarioMouseExited
+
+    private void btnInventarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMousePressed
+        this.btnInventario.setOpaque(true);
+    }//GEN-LAST:event_btnInventarioMousePressed
+
+    private void btnInventarioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseReleased
+        this.btnInventario.setOpaque(false);
+    }//GEN-LAST:event_btnInventarioMouseReleased
+
+    private void btnVehiculosComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_btnVehiculosComponentResized
+        escalarImagen(btnVehiculos,new ImageIcon("src/Imagenes/09.icono_btn_vehiculos.png"));
+    }//GEN-LAST:event_btnVehiculosComponentResized
+
+    private void btnVehiculosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseEntered
+        escalarImagen2(btnVehiculos,new ImageIcon("src/Imagenes/09.icono_btn_vehiculos.png"));
+    }//GEN-LAST:event_btnVehiculosMouseEntered
+
+    private void btnVehiculosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseExited
+        escalarImagen(btnVehiculos,new ImageIcon("src/Imagenes/09.icono_btn_vehiculos.png"));
+    }//GEN-LAST:event_btnVehiculosMouseExited
+
+    private void btnVehiculosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMousePressed
+        this.btnVehiculos.setOpaque(true);
+    }//GEN-LAST:event_btnVehiculosMousePressed
+
+    private void btnVehiculosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVehiculosMouseReleased
+        this.btnVehiculos.setOpaque(false);
+    }//GEN-LAST:event_btnVehiculosMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barra_menu;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnEmpleados;
+    private javax.swing.JButton btnInventario;
+    private javax.swing.JButton btnPagos;
+    private javax.swing.JButton btnTraslados;
+    private javax.swing.JButton btnVehiculos;
+    private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JPanel panelOpciones1;
+    private javax.swing.JPanel panelOpciones2;
     // End of variables declaration//GEN-END:variables
 }

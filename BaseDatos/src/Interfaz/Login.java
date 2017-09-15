@@ -1,12 +1,32 @@
 package Interfaz;
 
 import java.awt.Color;
+import ConexionBaseDatos.Conexion;
+import com.sun.awt.AWTUtilities;
+import com.sun.glass.events.KeyEvent;
+
+import java.awt.Shape;
+import java.awt.geom.RoundRectangle2D;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
-
-    public Login() {
+    int x,y;
+    String ID;
+    int IntID;   
+    Connection con = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    Principal pantalla;
+    String PASS_CRYPTO;
+    public Login() {     
+        
+        this.setUndecorated(true);
         initComponents();
-        setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
+        Shape forma = new RoundRectangle2D.Double(0,0,this.getBounds().width,this.getBounds().height,27,27);
+        AWTUtilities.setWindowShape(this, forma);
+        con = Conexion.ConnecrDb();
     }
 
     @SuppressWarnings("unchecked")
@@ -31,7 +51,6 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ingreso");
         setName("FrameLogin"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(340, 500));
         setResizable(false);
 
         panelFondo.setBackground(new java.awt.Color(48, 57, 74));
@@ -46,12 +65,17 @@ public class Login extends javax.swing.JFrame {
         txtUsuario.setBorder(null);
         txtUsuario.setCaretColor(new java.awt.Color(255, 255, 255));
         txtUsuario.setSelectionColor(new java.awt.Color(48, 134, 149));
-        txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txtUsuarioMouseEntered(evt);
+        txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusGained(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                txtUsuarioMouseExited(evt);
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusLost(evt);
+            }
+        });
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyTyped(evt);
             }
         });
 
@@ -67,9 +91,9 @@ public class Login extends javax.swing.JFrame {
         btnEntrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/02.icono_entrar_on.png"))); // NOI18N
         btnEntrar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/02.icono_entrar_on.png"))); // NOI18N
         btnEntrar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/02.icono_entrar_on.png"))); // NOI18N
-        btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEntrarMouseClicked(evt);
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
             }
         });
 
@@ -78,7 +102,7 @@ public class Login extends javax.swing.JFrame {
         lblOlvidar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         lblOlvidar.setForeground(new java.awt.Color(255, 255, 255));
         lblOlvidar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblOlvidar.setText("Olvidó su usario?");
+        lblOlvidar.setText("Olvidó su usuario?");
         lblOlvidar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 lblOlvidarMouseEntered(evt);
@@ -106,12 +130,17 @@ public class Login extends javax.swing.JFrame {
         txtContra.setCaretColor(new java.awt.Color(255, 255, 255));
         txtContra.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtContra.setSelectionColor(new java.awt.Color(48, 134, 149));
-        txtContra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txtContraMouseEntered(evt);
+        txtContra.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtContraFocusGained(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                txtContraMouseExited(evt);
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtContraFocusLost(evt);
+            }
+        });
+        txtContra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtContraKeyTyped(evt);
             }
         });
 
@@ -207,12 +236,6 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-        Principal v2 = new Principal();
-        v2.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnEntrarMouseClicked
-
     private void lblOlvidarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOlvidarMouseEntered
         this.lblOlvidar.setForeground(new Color(197,109,45));
     }//GEN-LAST:event_lblOlvidarMouseEntered
@@ -220,22 +243,6 @@ public class Login extends javax.swing.JFrame {
     private void lblOlvidarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOlvidarMouseExited
         this.lblOlvidar.setForeground(new Color(255,255,255));
     }//GEN-LAST:event_lblOlvidarMouseExited
-
-    private void txtUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMouseEntered
-        this.txtUsuario.setBackground(new Color(58, 68, 85));
-    }//GEN-LAST:event_txtUsuarioMouseEntered
-
-    private void txtContraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContraMouseEntered
-        this.txtContra.setBackground(new Color(58, 68, 85));
-    }//GEN-LAST:event_txtContraMouseEntered
-
-    private void txtUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMouseExited
-        this.txtUsuario.setBackground(new Color(48,57,74));
-    }//GEN-LAST:event_txtUsuarioMouseExited
-
-    private void txtContraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContraMouseExited
-        this.txtContra.setBackground(new Color(48,57,74));
-    }//GEN-LAST:event_txtContraMouseExited
 
     private void lblUserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserMouseEntered
         this.lblUser.setBackground(new Color(58, 68, 85));
@@ -245,6 +252,61 @@ public class Login extends javax.swing.JFrame {
         this.lblUser.setBackground(new Color(48,57,74));
     }//GEN-LAST:event_lblUserMouseExited
 
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+        char tecla = evt.getKeyChar();
+        if(tecla==KeyEvent.VK_ENTER){
+            this.btnEntrar.doClick();
+        }
+    }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    private void txtContraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraKeyTyped
+        char tecla = evt.getKeyChar();
+        if(tecla==KeyEvent.VK_ENTER){
+            this.btnEntrar.doClick();
+        }
+    }//GEN-LAST:event_txtContraKeyTyped
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        ingresarDatos();
+    }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
+        this.txtUsuario.setBackground(new Color(58, 68, 85));
+    }//GEN-LAST:event_txtUsuarioFocusGained
+
+    private void txtUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusLost
+        this.txtUsuario.setBackground(new Color(48,57,74));
+    }//GEN-LAST:event_txtUsuarioFocusLost
+
+    private void txtContraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraFocusGained
+        this.txtContra.setBackground(new Color(58, 68, 85));
+    }//GEN-LAST:event_txtContraFocusGained
+
+    private void txtContraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraFocusLost
+        this.txtContra.setBackground(new Color(48,57,74));
+    }//GEN-LAST:event_txtContraFocusLost
+   
+    private void ingresarDatos(){
+        //PASS_CRYPTO=DigestUtils.instance().md5(pass);
+        String sql ="select * from Usuario where Usuario = ? and Contraseña = ?";
+        try{        
+            pst = con.prepareStatement(sql);
+            pst.setString(1, txtUsuario.getText());
+            pst.setString(2, txtContra.getText());            
+            rs=pst.executeQuery();           
+            if (rs.next()){
+            ID = rs.getString("ID");
+            IntID = Integer.parseInt(ID);
+            JOptionPane.showMessageDialog(null, "Usuario y contraseña correctos");
+            pantalla = new Principal();
+            pantalla.setLocationRelativeTo(null);
+            pantalla.setVisible(true);
+            }else
+                JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrectos");
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);      
+        }     
+    }
     /**
      * @param args the command line arguments
      */
