@@ -20,15 +20,16 @@ public class Login extends javax.swing.JFrame {
     Principal pantalla;
     String PASS_CRYPTO;
     public Login() {     
-        
-        this.setUndecorated(true);
         initComponents();
+        iniciar();
+    }
+
+    private void iniciar(){
         this.setLocationRelativeTo(null);
         Shape forma = new RoundRectangle2D.Double(0,0,this.getBounds().width,this.getBounds().height,27,27);
         AWTUtilities.setWindowShape(this, forma);
         con = Conexion.ConnecrDb();
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -47,10 +48,12 @@ public class Login extends javax.swing.JFrame {
         txtContra = new javax.swing.JPasswordField();
         panelLogo = new javax.swing.JPanel();
         lblUser = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ingreso");
         setName("FrameLogin"); // NOI18N
+        setUndecorated(true);
         setResizable(false);
 
         panelFondo.setBackground(new java.awt.Color(48, 57, 74));
@@ -198,7 +201,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(lblOlvidar)
                 .addGap(34, 34, 34)
                 .addComponent(btnEntrar)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         panelFondo.add(panelContenido, java.awt.BorderLayout.CENTER);
@@ -218,7 +221,34 @@ public class Login extends javax.swing.JFrame {
                 lblUserMouseExited(evt);
             }
         });
-        panelLogo.add(lblUser);
+
+        btnCerrar.setText("Cerrar");
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelLogoLayout = new javax.swing.GroupLayout(panelLogo);
+        panelLogo.setLayout(panelLogoLayout);
+        panelLogoLayout.setHorizontalGroup(
+            panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLogoLayout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
+                .addComponent(btnCerrar)
+                .addContainerGap())
+        );
+        panelLogoLayout.setVerticalGroup(
+            panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLogoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCerrar)
+                    .addComponent(lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
 
         panelFondo.add(panelLogo, java.awt.BorderLayout.PAGE_START);
 
@@ -285,6 +315,10 @@ public class Login extends javax.swing.JFrame {
     private void txtContraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtContraFocusLost
         this.txtContra.setBackground(new Color(48,57,74));
     }//GEN-LAST:event_txtContraFocusLost
+
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnCerrarActionPerformed
    
     private void ingresarDatos(){
         //PASS_CRYPTO=DigestUtils.instance().md5(pass);
@@ -301,6 +335,7 @@ public class Login extends javax.swing.JFrame {
             pantalla = new Principal();
             pantalla.setLocationRelativeTo(null);
             pantalla.setVisible(true);
+            this.dispose();
             }else
                 JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrectos");
         } catch(Exception e){
@@ -344,6 +379,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEntrar;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

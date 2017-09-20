@@ -5,8 +5,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
-public class MenuPrincipal extends javax.swing.JInternalFrame {
-    
+public class MenuPrincipal extends javax.swing.JInternalFrame{
+    Pago mpago = new Pago();
     public MenuPrincipal() {
         initComponents();
         ((BasicInternalFrameUI) this.getUI()).setNorthPane(null);
@@ -58,8 +58,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        escritorio = new javax.swing.JDesktopPane();
         panelOpciones1 = new javax.swing.JPanel();
         panelOpciones2 = new javax.swing.JPanel();
         btnPagos = new javax.swing.JButton();
@@ -71,30 +69,26 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
-        jLabel1.setText("jLabel1");
-
         setBackground(new java.awt.Color(48, 57, 74));
         setBorder(null);
-        setMinimumSize(new java.awt.Dimension(545, 465));
+        setResizable(true);
+        setMinimumSize(new java.awt.Dimension(0, 0));
+        setOpaque(true);
         setPreferredSize(new java.awt.Dimension(545, 465));
         setVisible(true);
-        getContentPane().setLayout(new java.awt.GridLayout(1, 1));
-
-        escritorio.setOpaque(false);
-        escritorio.setPreferredSize(new java.awt.Dimension(545, 438));
 
         panelOpciones1.setBackground(new java.awt.Color(71, 80, 98));
-        panelOpciones1.setMinimumSize(new java.awt.Dimension(485, 91));
+        panelOpciones1.setMinimumSize(new java.awt.Dimension(0, 0));
 
         javax.swing.GroupLayout panelOpciones1Layout = new javax.swing.GroupLayout(panelOpciones1);
         panelOpciones1.setLayout(panelOpciones1Layout);
         panelOpciones1Layout.setHorizontalGroup(
             panelOpciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 487, Short.MAX_VALUE)
         );
         panelOpciones1Layout.setVerticalGroup(
             panelOpciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 91, Short.MAX_VALUE)
+            .addGap(0, 104, Short.MAX_VALUE)
         );
 
         panelOpciones2.setBackground(new java.awt.Color(71, 80, 98));
@@ -107,6 +101,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnPagos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPagos.setFocusPainted(false);
         btnPagos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPagos.setMaximumSize(new java.awt.Dimension(70, 70));
         btnPagos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnPagosMouseEntered(evt);
@@ -126,6 +121,11 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
                 btnPagosComponentResized(evt);
             }
         });
+        btnPagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagosActionPerformed(evt);
+            }
+        });
         panelOpciones2.add(btnPagos);
 
         btnEmpleados.setBackground(new java.awt.Color(54, 68, 97));
@@ -134,6 +134,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnEmpleados.setContentAreaFilled(false);
         btnEmpleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEmpleados.setFocusPainted(false);
+        btnEmpleados.setMaximumSize(new java.awt.Dimension(70, 70));
         btnEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnEmpleadosMouseEntered(evt);
@@ -161,6 +162,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnTraslados.setContentAreaFilled(false);
         btnTraslados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnTraslados.setFocusPainted(false);
+        btnTraslados.setMaximumSize(new java.awt.Dimension(70, 70));
         btnTraslados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnTrasladosMouseEntered(evt);
@@ -188,6 +190,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnInventario.setContentAreaFilled(false);
         btnInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInventario.setFocusPainted(false);
+        btnInventario.setMaximumSize(new java.awt.Dimension(70, 70));
         btnInventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnInventarioMouseEntered(evt);
@@ -215,6 +218,7 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         btnVehiculos.setContentAreaFilled(false);
         btnVehiculos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVehiculos.setFocusPainted(false);
+        btnVehiculos.setMaximumSize(new java.awt.Dimension(70, 70));
         btnVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnVehiculosMouseEntered(evt);
@@ -236,32 +240,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         });
         panelOpciones2.add(btnVehiculos);
 
-        escritorio.setLayer(panelOpciones1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        escritorio.setLayer(panelOpciones2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
-        escritorio.setLayout(escritorioLayout);
-        escritorioLayout.setHorizontalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(escritorioLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelOpciones1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelOpciones2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
-        escritorioLayout.setVerticalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(escritorioLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addComponent(panelOpciones1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(panelOpciones2, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(escritorio);
-
         jMenu1.setText("File");
         barra_menu.add(jMenu1);
 
@@ -269,6 +247,27 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         barra_menu.add(jMenu2);
 
         setJMenuBar(barra_menu);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelOpciones1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelOpciones2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(panelOpciones1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(panelOpciones2, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                .addGap(32, 32, 32))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -373,6 +372,11 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
         this.btnVehiculos.setOpaque(false);
     }//GEN-LAST:event_btnVehiculosMouseReleased
 
+    private void btnPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosActionPerformed
+        
+        this.setVisible(false);
+    }//GEN-LAST:event_btnPagosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar barra_menu;
@@ -381,8 +385,6 @@ public class MenuPrincipal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnPagos;
     private javax.swing.JButton btnTraslados;
     private javax.swing.JButton btnVehiculos;
-    private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel panelOpciones1;
