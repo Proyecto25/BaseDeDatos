@@ -18,34 +18,54 @@ import javax.swing.Timer;
 public class Principal extends javax.swing.JFrame {
     Conexion conn = new Conexion();
     Connection con;
+    static String nomUsuario;
     Pago pago = new Pago();
-    public Principal() {
+    Clientes clientes = new Clientes();
+    Empleados empleados = new Empleados();
+    Inventario inventario = new Inventario();
+    Traslados traslados = new Traslados();
+    Vehiculos vehiculos = new Vehiculos();
+    Reportes reportes = new Reportes();
+    public Principal(String usuario) {
         initComponents();
+        nomUsuario = usuario;
+    }
+
+    private void inicio(){
         this.setExtendedState(MAXIMIZED_BOTH);
         this.escritorio.add(pago);
+        this.escritorio.add(clientes);
+        this.escritorio.add(empleados);
+        this.escritorio.add(inventario);
+        this.escritorio.add(traslados);
+        this.escritorio.add(vehiculos);
+        this.escritorio.add(reportes);
         btnPagos.setSize(170, 110);
+        btnClientes.setSize(170, 110);
         btnEmpleados.setSize(170, 110);
         btnTraslados.setSize(170, 110);
         btnInventario.setSize(170, 110);
         btnVehiculos.setSize(170, 110);
         panelOpciones1.setSize(170,110);
-        ImageIcon imagen[] = new ImageIcon[5];
+        lblUsuario.setText("Usuario: "+nomUsuario);
+        ImageIcon imagen[] = new ImageIcon[8];
         imagen[0] = new ImageIcon("src/Imagenes/05.icono_btn_pagos.png");
         imagen[1] = new ImageIcon("src/Imagenes/06.icono_btn_empleados.png");
         imagen[2] = new ImageIcon("src/Imagenes/07.icono_btn_traslados.png");
         imagen[3] = new ImageIcon("src/Imagenes/08.icono_btn_inventario.png");
         imagen[4] = new ImageIcon("src/Imagenes/09.icono_btn_vehiculos.png");
+        imagen[5] = new ImageIcon("src/Imagenes/10.icono_usuario3.png");
+        imagen[6] = new ImageIcon("src/Imagenes/11.icono_btn_reportes.png");
+        imagen[7] = new ImageIcon("src/Imagenes/12.icono_btn_clientes.png");
         escalarImagen(btnPagos, imagen[0]);
         escalarImagen(btnEmpleados, imagen[1]);
         escalarImagen(btnTraslados, imagen[2]);
         escalarImagen(btnInventario, imagen[3]);
         escalarImagen(btnVehiculos, imagen[4]);
-        //int ancho = this.panelSuperior.getWidth();
-        //int alto = this.panelSuperior.getHeight();
-        //ancho = (ancho*20)/100;
-        //this.panelOpciones1.setSize(ancho, alto);
+        escalarImagen(btnIconoUsuario, imagen[5]);
+        escalarImagen(btnReportes, imagen[6]);
+        escalarImagen(btnClientes, imagen[7]);
     }
-
     private void escalarImagen(JButton btn, ImageIcon img){
         //se recibe la imagen en un Image
         Image imagen = img.getImage();
@@ -84,19 +104,18 @@ public class Principal extends javax.swing.JFrame {
         lblUsuario = new javax.swing.JLabel();
         lblHora = new javax.swing.JLabel();
         lblCerrarSesion = new javax.swing.JLabel();
-        iconoUsuario = new javax.swing.JLabel();
-        iconoCerrar = new javax.swing.JLabel();
+        btnIconoUsuario = new javax.swing.JButton();
+        btnIconoCerrarSesion = new javax.swing.JButton();
         panelOpciones2 = new javax.swing.JPanel();
         btnPagos = new javax.swing.JButton();
+        btnClientes = new javax.swing.JButton();
         btnEmpleados = new javax.swing.JButton();
         btnTraslados = new javax.swing.JButton();
         btnInventario = new javax.swing.JButton();
         btnVehiculos = new javax.swing.JButton();
+        btnReportes = new javax.swing.JButton();
         panelContenido = new javax.swing.JPanel();
         escritorio = new javax.swing.JDesktopPane();
-        menuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tren de Aseo");
@@ -112,6 +131,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         panelSuperior.setBackground(new java.awt.Color(71, 80, 98));
+        panelSuperior.setPreferredSize(new java.awt.Dimension(239, 100));
         panelSuperior.setLayout(new java.awt.BorderLayout());
 
         panelOpciones1.setBackground(new java.awt.Color(71, 80, 98));
@@ -142,14 +162,37 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        iconoUsuario.setBackground(new java.awt.Color(0, 153, 153));
-        iconoUsuario.setOpaque(true);
-
-        iconoCerrar.setBackground(new java.awt.Color(0, 153, 153));
-        iconoCerrar.setOpaque(true);
-        iconoCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnIconoUsuario.setBorder(null);
+        btnIconoUsuario.setBorderPainted(false);
+        btnIconoUsuario.setContentAreaFilled(false);
+        btnIconoUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIconoUsuario.setFocusPainted(false);
+        btnIconoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                iconoCerrarMouseClicked(evt);
+                btnIconoUsuarioMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnIconoUsuarioMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnIconoUsuarioMouseReleased(evt);
+            }
+        });
+
+        btnIconoCerrarSesion.setBorder(null);
+        btnIconoCerrarSesion.setBorderPainted(false);
+        btnIconoCerrarSesion.setContentAreaFilled(false);
+        btnIconoCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIconoCerrarSesion.setFocusPainted(false);
+        btnIconoCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIconoCerrarSesionMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnIconoCerrarSesionMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnIconoCerrarSesionMouseReleased(evt);
             }
         });
 
@@ -162,44 +205,46 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(panelOpciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(panelOpciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnIconoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnIconoCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(panelOpciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelOpciones1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(iconoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
-                    .addGroup(panelOpciones1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(iconoCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelOpciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(74, 74, 74))
+                        .addComponent(lblUsuario)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelOpciones1Layout.setVerticalGroup(
             panelOpciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelOpciones1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(panelOpciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(iconoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelOpciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblHora, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-                        .addComponent(lblUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(panelOpciones1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(lblHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelOpciones1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(panelOpciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnIconoUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelOpciones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelOpciones1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(lblCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(iconoCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelOpciones1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelOpciones1Layout.createSequentialGroup()
                         .addComponent(lblFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(6, 6, 6)))
+                        .addGap(10, 10, 10))
+                    .addComponent(btnIconoCerrarSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelOpciones1Layout.createSequentialGroup()
+                        .addComponent(lblCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(20, 20, 20))
         );
 
         panelSuperior.add(panelOpciones1, java.awt.BorderLayout.WEST);
 
         panelOpciones2.setBackground(new java.awt.Color(71, 80, 98));
-        panelOpciones2.setLayout(new java.awt.GridLayout(1, 5));
+        panelOpciones2.setLayout(new java.awt.GridLayout(1, 7));
 
         btnPagos.setBackground(new java.awt.Color(54, 68, 97));
         btnPagos.setBorder(null);
@@ -235,6 +280,38 @@ public class Principal extends javax.swing.JFrame {
         });
         panelOpciones2.add(btnPagos);
 
+        btnClientes.setBackground(new java.awt.Color(54, 68, 97));
+        btnClientes.setBorder(null);
+        btnClientes.setBorderPainted(false);
+        btnClientes.setContentAreaFilled(false);
+        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientes.setFocusPainted(false);
+        btnClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnClientesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnClientesMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnClientesMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnClientesMouseReleased(evt);
+            }
+        });
+        btnClientes.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                btnClientesComponentResized(evt);
+            }
+        });
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
+        panelOpciones2.add(btnClientes);
+
         btnEmpleados.setBackground(new java.awt.Color(54, 68, 97));
         btnEmpleados.setBorder(null);
         btnEmpleados.setBorderPainted(false);
@@ -259,6 +336,11 @@ public class Principal extends javax.swing.JFrame {
         btnEmpleados.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 btnEmpleadosComponentResized(evt);
+            }
+        });
+        btnEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmpleadosActionPerformed(evt);
             }
         });
         panelOpciones2.add(btnEmpleados);
@@ -289,6 +371,11 @@ public class Principal extends javax.swing.JFrame {
                 btnTrasladosComponentResized(evt);
             }
         });
+        btnTraslados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTrasladosActionPerformed(evt);
+            }
+        });
         panelOpciones2.add(btnTraslados);
 
         btnInventario.setBackground(new java.awt.Color(54, 68, 97));
@@ -315,6 +402,11 @@ public class Principal extends javax.swing.JFrame {
         btnInventario.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 btnInventarioComponentResized(evt);
+            }
+        });
+        btnInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventarioActionPerformed(evt);
             }
         });
         panelOpciones2.add(btnInventario);
@@ -345,7 +437,44 @@ public class Principal extends javax.swing.JFrame {
                 btnVehiculosComponentResized(evt);
             }
         });
+        btnVehiculos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVehiculosActionPerformed(evt);
+            }
+        });
         panelOpciones2.add(btnVehiculos);
+
+        btnReportes.setBackground(new java.awt.Color(54, 68, 97));
+        btnReportes.setBorder(null);
+        btnReportes.setBorderPainted(false);
+        btnReportes.setContentAreaFilled(false);
+        btnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReportes.setFocusPainted(false);
+        btnReportes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnReportesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnReportesMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnReportesMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnReportesMouseReleased(evt);
+            }
+        });
+        btnReportes.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                btnReportesComponentResized(evt);
+            }
+        });
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+        panelOpciones2.add(btnReportes);
 
         panelSuperior.add(panelOpciones2, java.awt.BorderLayout.CENTER);
 
@@ -359,11 +488,11 @@ public class Principal extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 772, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
+            .addGap(0, 368, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelContenidoLayout = new javax.swing.GroupLayout(panelContenido);
@@ -384,14 +513,6 @@ public class Principal extends javax.swing.JFrame {
         );
 
         getContentPane().add(panelContenido, java.awt.BorderLayout.CENTER);
-
-        jMenu1.setText("File");
-        menuBar.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        menuBar.add(jMenu2);
-
-        setJMenuBar(menuBar);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -425,7 +546,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPagosComponentResized
 
     private void btnPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosActionPerformed
-        //this.panelMenu.setVisible(false);
+        this.clientes.setVisible(false);
+        this.empleados.setVisible(false);
+        this.inventario.setVisible(false);
+        this.reportes.setVisible(false);
+        this.traslados.setVisible(false);
+        this.vehiculos.setVisible(false);
         this.mostrarInternal(pago);
     }//GEN-LAST:event_btnPagosActionPerformed
 
@@ -527,16 +653,138 @@ public class Principal extends javax.swing.JFrame {
         //Hora del sistema
         Timer tiempo = new Timer(100, new Principal.horas());
         tiempo.start();
+        inicio();
     }//GEN-LAST:event_formWindowOpened
-
-    private void iconoCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconoCerrarMouseClicked
-        cerrarSesion();
-    }//GEN-LAST:event_iconoCerrarMouseClicked
 
     private void lblCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarSesionMouseClicked
         cerrarSesion();
     }//GEN-LAST:event_lblCerrarSesionMouseClicked
-   
+
+    private void btnIconoUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIconoUsuarioMousePressed
+        escalarImagen2(btnIconoUsuario,new ImageIcon("src/Imagenes/10.icono_usuario3.png"));
+    }//GEN-LAST:event_btnIconoUsuarioMousePressed
+
+    private void btnIconoUsuarioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIconoUsuarioMouseReleased
+        escalarImagen(btnIconoUsuario,new ImageIcon("src/Imagenes/10.icono_usuario3.png"));
+    }//GEN-LAST:event_btnIconoUsuarioMouseReleased
+
+    private void btnIconoCerrarSesionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIconoCerrarSesionMousePressed
+        
+    }//GEN-LAST:event_btnIconoCerrarSesionMousePressed
+
+    private void btnIconoCerrarSesionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIconoCerrarSesionMouseReleased
+        
+    }//GEN-LAST:event_btnIconoCerrarSesionMouseReleased
+
+    private void btnIconoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIconoUsuarioMouseClicked
+       
+    }//GEN-LAST:event_btnIconoUsuarioMouseClicked
+
+    private void btnIconoCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIconoCerrarSesionMouseClicked
+        cerrarSesion();
+    }//GEN-LAST:event_btnIconoCerrarSesionMouseClicked
+
+    private void btnEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadosActionPerformed
+        this.pago.setVisible(false);
+        this.clientes.setVisible(false);
+        this.inventario.setVisible(false);
+        this.reportes.setVisible(false);
+        this.traslados.setVisible(false);
+        this.vehiculos.setVisible(false);
+        this.mostrarInternal(empleados);
+    }//GEN-LAST:event_btnEmpleadosActionPerformed
+
+    private void btnTrasladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrasladosActionPerformed
+        this.pago.setVisible(false);
+        this.empleados.setVisible(false);
+        this.inventario.setVisible(false);
+        this.reportes.setVisible(false);
+        this.clientes.setVisible(false);
+        this.vehiculos.setVisible(false);
+        this.mostrarInternal(traslados);
+    }//GEN-LAST:event_btnTrasladosActionPerformed
+
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
+        this.pago.setVisible(false);
+        this.empleados.setVisible(false);
+        this.clientes.setVisible(false);
+        this.reportes.setVisible(false);
+        this.traslados.setVisible(false);
+        this.vehiculos.setVisible(false);
+        this.mostrarInternal(inventario);
+    }//GEN-LAST:event_btnInventarioActionPerformed
+
+    private void btnVehiculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculosActionPerformed
+        this.pago.setVisible(false);
+        this.empleados.setVisible(false);
+        this.inventario.setVisible(false);
+        this.reportes.setVisible(false);
+        this.traslados.setVisible(false);
+        this.clientes.setVisible(false);
+        this.mostrarInternal(vehiculos);
+    }//GEN-LAST:event_btnVehiculosActionPerformed
+
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        this.pago.setVisible(false);
+        this.empleados.setVisible(false);
+        this.inventario.setVisible(false);
+        this.clientes.setVisible(false);
+        this.traslados.setVisible(false);
+        this.vehiculos.setVisible(false);
+        this.mostrarInternal(reportes);
+    }//GEN-LAST:event_btnReportesActionPerformed
+
+    private void btnReportesComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_btnReportesComponentResized
+        escalarImagen(btnReportes,new ImageIcon("src/Imagenes/11.icono_btn_reportes.png"));
+    }//GEN-LAST:event_btnReportesComponentResized
+
+    private void btnReportesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMouseEntered
+        escalarImagen2(btnReportes,new ImageIcon("src/Imagenes/11.icono_btn_reportes.png"));
+    }//GEN-LAST:event_btnReportesMouseEntered
+
+    private void btnReportesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMouseExited
+        escalarImagen(btnReportes,new ImageIcon("src/Imagenes/11.icono_btn_reportes.png"));
+    }//GEN-LAST:event_btnReportesMouseExited
+
+    private void btnReportesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMousePressed
+        this.btnReportes.setOpaque(true);
+    }//GEN-LAST:event_btnReportesMousePressed
+
+    private void btnReportesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMouseReleased
+        this.btnReportes.setOpaque(false);
+    }//GEN-LAST:event_btnReportesMouseReleased
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        this.pago.setVisible(false);
+        this.empleados.setVisible(false);
+        this.inventario.setVisible(false);
+        this.reportes.setVisible(false);
+        this.traslados.setVisible(false);
+        this.vehiculos.setVisible(false);
+        this.mostrarInternal(clientes);
+    }//GEN-LAST:event_btnClientesActionPerformed
+
+    private void btnClientesComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_btnClientesComponentResized
+        escalarImagen(btnClientes,new ImageIcon("src/Imagenes/12.icono_btn_clientes.png"));
+    }//GEN-LAST:event_btnClientesComponentResized
+
+    private void btnClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseEntered
+        escalarImagen2(btnClientes,new ImageIcon("src/Imagenes/12.icono_btn_clientes.png"));
+    }//GEN-LAST:event_btnClientesMouseEntered
+
+    private void btnClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseExited
+        escalarImagen(btnClientes,new ImageIcon("src/Imagenes/12.icono_btn_clientes.png"));
+    }//GEN-LAST:event_btnClientesMouseExited
+
+    private void btnClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMousePressed
+        this.btnClientes.setOpaque(true);
+    }//GEN-LAST:event_btnClientesMousePressed
+
+    private void btnClientesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseReleased
+        this.btnClientes.setOpaque(false);
+    }//GEN-LAST:event_btnClientesMouseReleased
+
+    
     private void cerrarSesion(){
         if (JOptionPane.showConfirmDialog(this, "Desea cerrar sesión?", "Cerrar Sesión", JOptionPane.YES_NO_OPTION, 0,
                 new ImageIcon(getClass().getResource("/Imagenes/btnCerrarSesion.png"))) == JOptionPane.YES_OPTION) {
@@ -587,27 +835,26 @@ public class Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                new Principal(nomUsuario).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnEmpleados;
+    private javax.swing.JButton btnIconoCerrarSesion;
+    private javax.swing.JButton btnIconoUsuario;
     private javax.swing.JButton btnInventario;
     private javax.swing.JButton btnPagos;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnTraslados;
     private javax.swing.JButton btnVehiculos;
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JLabel iconoCerrar;
-    private javax.swing.JLabel iconoUsuario;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JLabel lblCerrarSesion;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel panelContenido;
     private javax.swing.JPanel panelOpciones1;
     private javax.swing.JPanel panelOpciones2;

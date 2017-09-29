@@ -4,6 +4,7 @@ import java.awt.Color;
 import ConexionBaseDatos.Conexion;
 import com.sun.awt.AWTUtilities;
 import com.sun.glass.events.KeyEvent;
+import encriptacionaes.Encriptado;
 
 import java.awt.Shape;
 import java.awt.geom.RoundRectangle2D;
@@ -13,15 +14,22 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
     int x,y;
     String ID;
-    int IntID;   
+    String pass=null, passDesenc=null;
+    int IntID;
+    String usuario;
     Connection con = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
     Principal pantalla;
     String PASS_CRYPTO;
+    String llave = "92AE31A79FEEB2A3"; //llave
+    String vi = "0123456789ABCDEF"; // vector de inicialización
+    
+    //stem.out.println("Texto desencriptado: "+Encriptado.desencripta(llave, iv,Encriptado.encripta(llave, vi,cleartext)));
     public Login() {     
         initComponents();
         iniciar();
+       // updateEnc();
     }
 
     private void iniciar(){
@@ -29,6 +37,7 @@ public class Login extends javax.swing.JFrame {
         Shape forma = new RoundRectangle2D.Double(0,0,this.getBounds().width,this.getBounds().height,27,27);
         AWTUtilities.setWindowShape(this, forma);
         con = Conexion.ConnecrDb();
+        this.txtUsuario.requestFocus();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -176,7 +185,7 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(panelContenidoLayout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addComponent(btnEntrar)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         panelContenidoLayout.setVerticalGroup(
             panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +231,11 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        btnCerrar.setText("Cerrar");
+        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnCerrarLogin.png"))); // NOI18N
+        btnCerrar.setBorderPainted(false);
+        btnCerrar.setContentAreaFilled(false);
+        btnCerrar.setFocusPainted(false);
+        btnCerrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnCerrarLogin2.png"))); // NOI18N
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarActionPerformed(evt);
@@ -236,16 +249,16 @@ public class Login extends javax.swing.JFrame {
             .addGroup(panelLogoLayout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addComponent(lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(47, 47, 47)
-                .addComponent(btnCerrar)
-                .addContainerGap())
+                .addGap(84, 84, 84)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
         );
         panelLogoLayout.setVerticalGroup(
             panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLogoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(5, 5, 5)
                 .addGroup(panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCerrar)
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -326,21 +339,52 @@ public class Login extends javax.swing.JFrame {
         try{        
             pst = con.prepareStatement(sql);
             pst.setString(1, txtUsuario.getText());
-            pst.setString(2, txtContra.getText());            
+            pst.setString(2, Encriptado.encripta(llave, vi, txtContra.getText()));            
             rs=pst.executeQuery();           
             if (rs.next()){
-            ID = rs.getString("ID");
-            IntID = Integer.parseInt(ID);
-            JOptionPane.showMessageDialog(null, "Usuario y contraseña correctos");
-            pantalla = new Principal();
-            pantalla.setLocationRelativeTo(null);
-            pantalla.setVisible(true);
-            this.dispose();
-            }else
+                ID = rs.getString("ID");
+                IntID = Integer.parseInt(ID);
+                usuario = rs.getString("Usuario");
+                pass = rs.getString("Contraseña");
+                passDesenc = Encriptado.desencripta(llave, vi,pass);
+                JOptionPane.showMessageDialog(null, "Usuario y contraseña correctos\nEncriptado: "+pass+"\nDesenc: "+passDesenc);
+                pantalla = new Principal(usuario);
+                pantalla.setLocationRelativeTo(null);
+                pantalla.setVisible(true);
+                this.dispose();
+            }else{
                 JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrectos");
+                this.txtUsuario.setText("");
+                this.txtContra.setText("");
+                this.txtUsuario.requestFocus();
+            }
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, e);      
         }     
+    }
+    
+    private void updateEnc(){
+        String passw= null;
+        try{        
+            PreparedStatement pst2 = con.prepareStatement("select contraseña from usuario where ID = "+2);
+            ResultSet rs2=pst2.executeQuery();         
+            if (rs2.next()){
+                passw = rs2.getString("Contraseña");
+            }
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);      
+        }     
+        try {//Encriptar contraseña
+            passw = Encriptado.encripta(llave, vi, passw);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        try{
+            PreparedStatement pst3 = con.prepareStatement("update usuario set Contraseña = '"+passw+"' where ID = "+2);
+            pst3.executeUpdate();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
     /**
      * @param args the command line arguments
