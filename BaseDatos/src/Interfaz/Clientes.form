@@ -86,22 +86,13 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="btnCancelar" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="btnCheck" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnModificarCliente" min="-2" pref="46" max="-2" attributes="0"/>
-                              <Component id="btnAgregarCliente" min="-2" pref="46" max="-2" attributes="0"/>
-                              <Component id="btnEliminarCliente" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnCancelar" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="btnCheck" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="btnModificarCliente" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="btnAgregarCliente" min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="btnEliminarCliente" alignment="0" min="-2" pref="46" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -345,7 +336,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblDpi" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblMunicipio" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -354,39 +345,56 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="txtDpi" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="txtAldea" pref="178" max="32767" attributes="0"/>
-                                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="txtMunicipio" pref="178" max="32767" attributes="0"/>
+                                              <Component id="txtAldea" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                                           <Component id="filler2" min="-2" pref="25" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblCaserio" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Component id="txtCaserio" pref="179" max="32767" attributes="0"/>
+                                          <Component id="lblCaserio" min="-2" pref="78" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtCaserio" pref="178" max="32767" attributes="0"/>
+                                              <Component id="txtBoleto" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <Component id="txtDireccion" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtMunicipio" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtDpi" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblNumCliente" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblNombres" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                          <Component id="txtNumCliente" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
                                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                           <Component id="txtNombres" max="32767" attributes="0"/>
                                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                           <Component id="filler1" min="-2" pref="25" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblApellidos" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtApellidos" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                          <Component id="txtNumCliente" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="lblApellidos" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                                  <Component id="txtApellidos" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="lblboleto1" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="lblApellidos1" alignment="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <Component id="txtTelefono" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>
@@ -394,7 +402,7 @@
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Component id="filler3" min="-2" pref="25" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                          <Component id="panelDet2" pref="114" max="32767" attributes="0"/>
+                          <Component id="panelDet2" pref="116" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -426,11 +434,23 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="txtDpi" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtDpi" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                                  <Component id="txtTelefono" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblApellidos1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtMunicipio" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblMunicipio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                                  <Component id="txtBoleto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblboleto1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="txtMunicipio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblMunicipio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -697,6 +717,44 @@
                   <AuxValues>
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
                   </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblApellidos1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Eras Medium ITC" size="16" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Telefono:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtTelefono">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="16" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="34" green="34" red="34" type="rgb"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtBoleto">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="16" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="34" green="34" red="34" type="rgb"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblboleto1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Eras Medium ITC" size="16" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Boleto"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
