@@ -25,11 +25,10 @@ public class Login extends javax.swing.JFrame {
     String llave = "92AE31A79FEEB2A3"; //llave
     String vi = "0123456789ABCDEF"; // vector de inicialización
     
-    //stem.out.println("Texto desencriptado: "+Encriptado.desencripta(llave, iv,Encriptado.encripta(llave, vi,cleartext)));
     public Login() {     
         initComponents();
         iniciar();
-       // updateEnc();
+        //updateEnc();
     }
 
     private void iniciar(){
@@ -72,7 +71,7 @@ public class Login extends javax.swing.JFrame {
         panelContenido.setBackground(new java.awt.Color(48, 57, 74));
 
         txtUsuario.setBackground(new java.awt.Color(48, 57, 74));
-        txtUsuario.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
         txtUsuario.setBorder(null);
         txtUsuario.setCaretColor(new java.awt.Color(255, 255, 255));
@@ -136,7 +135,7 @@ public class Login extends javax.swing.JFrame {
         lblContra.setText("Contraseña");
 
         txtContra.setBackground(new java.awt.Color(48, 57, 74));
-        txtContra.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtContra.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         txtContra.setForeground(new java.awt.Color(255, 255, 255));
         txtContra.setBorder(null);
         txtContra.setCaretColor(new java.awt.Color(255, 255, 255));
@@ -222,14 +221,6 @@ public class Login extends javax.swing.JFrame {
         lblUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/01.icono_usuario2.png"))); // NOI18N
         lblUser.setToolTipText("");
         lblUser.setOpaque(true);
-        lblUser.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblUserMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblUserMouseExited(evt);
-            }
-        });
 
         btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnCerrarLogin.png"))); // NOI18N
         btnCerrar.setBorderPainted(false);
@@ -287,14 +278,6 @@ public class Login extends javax.swing.JFrame {
         this.lblOlvidar.setForeground(new Color(255,255,255));
     }//GEN-LAST:event_lblOlvidarMouseExited
 
-    private void lblUserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserMouseEntered
-        this.lblUser.setBackground(new Color(58, 68, 85));
-    }//GEN-LAST:event_lblUserMouseEntered
-
-    private void lblUserMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserMouseExited
-        this.lblUser.setBackground(new Color(48,57,74));
-    }//GEN-LAST:event_lblUserMouseExited
-
     private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
         char tecla = evt.getKeyChar();
         if(tecla==KeyEvent.VK_ENTER){
@@ -334,15 +317,14 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarActionPerformed
    
     private void ingresarDatos(){
-        //PASS_CRYPTO=DigestUtils.instance().md5(pass);
-        String sql ="select * from Usuario where Usuario = ? and Contraseña = ?";
+        String sql ="SELECT *FROM Usuario WHERE Usuario = ? AND Contraseña = ?";
         try{        
             pst = con.prepareStatement(sql);
             pst.setString(1, txtUsuario.getText());
             pst.setString(2, Encriptado.encripta(llave, vi, txtContra.getText()));            
             rs=pst.executeQuery();           
             if (rs.next()){
-                ID = rs.getString("ID");
+                ID = rs.getString("idUsuario");
                 IntID = Integer.parseInt(ID);
                 usuario = rs.getString("Usuario");
                 pass = rs.getString("Contraseña");
@@ -358,6 +340,7 @@ public class Login extends javax.swing.JFrame {
                 this.txtContra.setText("");
                 this.txtUsuario.requestFocus();
             }
+            rs.close();
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, e);      
         }     
@@ -366,11 +349,12 @@ public class Login extends javax.swing.JFrame {
     private void updateEnc(){
         String passw= null;
         try{        
-            PreparedStatement pst2 = con.prepareStatement("select contraseña from usuario where ID = "+2);
+            PreparedStatement pst2 = con.prepareStatement("SELECT Contraseña FROM Usuario WHERE idUsuario = "+1);
             ResultSet rs2=pst2.executeQuery();         
             if (rs2.next()){
                 passw = rs2.getString("Contraseña");
             }
+            rs2.close();
         } catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);      
         }     
@@ -379,8 +363,8 @@ public class Login extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        try{
-            PreparedStatement pst3 = con.prepareStatement("update usuario set Contraseña = '"+passw+"' where ID = "+2);
+        try{//Actualizar contraseña
+            PreparedStatement pst3 = con.prepareStatement("UPDATE Usuario SET Contraseña = '"+passw+"' WHERE idUsuario = "+1);
             pst3.executeUpdate();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);

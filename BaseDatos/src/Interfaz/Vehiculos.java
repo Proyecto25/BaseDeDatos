@@ -1,9 +1,15 @@
 package Interfaz;
 
+import Consultas.Vehiculo;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.JTableHeader;
 
 public class Vehiculos extends javax.swing.JInternalFrame {
 
+    RedimensionarImg redi = new RedimensionarImg();
+    Vehiculo vh = new Vehiculo();
     public Vehiculos() {
         initComponents();
     }
@@ -16,6 +22,46 @@ public class Vehiculos extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        panelOpciones = new javax.swing.JPanel();
+        btnAgregarEmp = new javax.swing.JButton();
+        btnModificarEmp = new javax.swing.JButton();
+        btnEliminarEmp = new javax.swing.JButton();
+        btnCheck = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        panelContenido = new javax.swing.JPanel();
+        panelVehiculos = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblVehiculos = new javax.swing.JTable();
+        panelDet = new javax.swing.JScrollPane();
+        panelDetalles = new javax.swing.JPanel();
+        panelDet2 = new javax.swing.JPanel();
+        panelCond = new javax.swing.JPanel();
+        btnConductor = new javax.swing.JButton();
+        lblNombres = new javax.swing.JLabel();
+        lblApellidos = new javax.swing.JLabel();
+        lblEdad = new javax.swing.JLabel();
+        txtApellidos = new javax.swing.JTextField();
+        txtNombres = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
+        lblSituacion1 = new javax.swing.JLabel();
+        lblNumVehiculo = new javax.swing.JLabel();
+        lblModelo = new javax.swing.JLabel();
+        lblColor = new javax.swing.JLabel();
+        lblMarca = new javax.swing.JLabel();
+        lblMotor = new javax.swing.JLabel();
+        lblCapacidad = new javax.swing.JLabel();
+        txtNumVehiculo = new javax.swing.JTextField();
+        txtModelo = new javax.swing.JTextField();
+        txtColor = new javax.swing.JTextField();
+        txtMarca = new javax.swing.JTextField();
+        txtMotor = new javax.swing.JTextField();
+        txtCapacidad = new javax.swing.JTextField();
+        lblPlaca = new javax.swing.JLabel();
+        txtPlaca = new javax.swing.JTextField();
+        lblCilindros = new javax.swing.JLabel();
+        txtCilindros = new javax.swing.JTextField();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
 
         setBackground(new java.awt.Color(144, 144, 144));
         setBorder(null);
@@ -38,25 +84,649 @@ public class Vehiculos extends javax.swing.JInternalFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
+        panelOpciones.setBackground(new java.awt.Color(61, 71, 90));
+        panelOpciones.setPreferredSize(new java.awt.Dimension(741, 50));
+
+        btnAgregarEmp.setBackground(new java.awt.Color(54, 68, 97));
+        btnAgregarEmp.setToolTipText("Agregar Vehículo");
+        btnAgregarEmp.setBorder(null);
+        btnAgregarEmp.setBorderPainted(false);
+        btnAgregarEmp.setContentAreaFilled(false);
+        btnAgregarEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregarEmp.setFocusPainted(false);
+        btnAgregarEmp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarEmpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarEmpMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAgregarEmpMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAgregarEmpMouseReleased(evt);
+            }
+        });
+
+        btnModificarEmp.setBackground(new java.awt.Color(54, 68, 97));
+        btnModificarEmp.setToolTipText("Modificar Datos de Vehículo");
+        btnModificarEmp.setAlignmentY(0.2F);
+        btnModificarEmp.setBorder(null);
+        btnModificarEmp.setBorderPainted(false);
+        btnModificarEmp.setContentAreaFilled(false);
+        btnModificarEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificarEmp.setFocusPainted(false);
+        btnModificarEmp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnModificarEmpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnModificarEmpMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnModificarEmpMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnModificarEmpMouseReleased(evt);
+            }
+        });
+        btnModificarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarEmpActionPerformed(evt);
+            }
+        });
+
+        btnEliminarEmp.setBackground(new java.awt.Color(54, 68, 97));
+        btnEliminarEmp.setToolTipText("Eliminar Vehículo");
+        btnEliminarEmp.setAlignmentY(0.2F);
+        btnEliminarEmp.setBorder(null);
+        btnEliminarEmp.setBorderPainted(false);
+        btnEliminarEmp.setContentAreaFilled(false);
+        btnEliminarEmp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminarEmp.setFocusPainted(false);
+        btnEliminarEmp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEliminarEmpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEliminarEmpMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEliminarEmpMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEliminarEmpMouseReleased(evt);
+            }
+        });
+
+        btnCheck.setAlignmentY(0.2F);
+        btnCheck.setBorder(null);
+        btnCheck.setBorderPainted(false);
+        btnCheck.setContentAreaFilled(false);
+        btnCheck.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCheck.setFocusPainted(false);
+        btnCheck.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCheckMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCheckMouseExited(evt);
+            }
+        });
+        btnCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheckActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setBorder(null);
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.setFocusPainted(false);
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseExited(evt);
+            }
+        });
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelOpcionesLayout = new javax.swing.GroupLayout(panelOpciones);
+        panelOpciones.setLayout(panelOpcionesLayout);
+        panelOpcionesLayout.setHorizontalGroup(
+            panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelOpcionesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnAgregarEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnModificarEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEliminarEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 281, Short.MAX_VALUE)
+        panelOpcionesLayout.setVerticalGroup(
+            panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelOpcionesLayout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addGroup(panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelOpcionesLayout.createSequentialGroup()
+                        .addGroup(panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCheck, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelOpcionesLayout.createSequentialGroup()
+                        .addGroup(panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnModificarEmp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                            .addComponent(btnAgregarEmp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEliminarEmp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(2, 2, 2))))
         );
+
+        getContentPane().add(panelOpciones, java.awt.BorderLayout.NORTH);
+
+        panelContenido.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, null, new java.awt.Color(102, 102, 102), null, new java.awt.Color(102, 102, 102)));
+        panelContenido.setOpaque(false);
+
+        panelVehiculos.setBackground(new java.awt.Color(71, 80, 98));
+
+        tblVehiculos.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
+        tblVehiculos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblVehiculos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblVehiculos.setRowHeight(20);
+        tblVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblVehiculosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblVehiculos);
+
+        javax.swing.GroupLayout panelVehiculosLayout = new javax.swing.GroupLayout(panelVehiculos);
+        panelVehiculos.setLayout(panelVehiculosLayout);
+        panelVehiculosLayout.setHorizontalGroup(
+            panelVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        panelVehiculosLayout.setVerticalGroup(
+            panelVehiculosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+        );
+
+        panelDet.setBorder(null);
+
+        panelDetalles.setBackground(new java.awt.Color(222, 222, 222));
+
+        panelDet2.setLayout(new java.awt.BorderLayout());
+
+        btnConductor.setToolTipText("Conductor");
+        btnConductor.setBorder(null);
+        btnConductor.setBorderPainted(false);
+        btnConductor.setContentAreaFilled(false);
+        btnConductor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConductor.setFocusPainted(false);
+
+        lblNombres.setFont(new java.awt.Font("Eras Medium ITC", 1, 16)); // NOI18N
+        lblNombres.setText("Nombres:");
+
+        lblApellidos.setFont(new java.awt.Font("Eras Medium ITC", 1, 16)); // NOI18N
+        lblApellidos.setText("Apellidos:");
+
+        lblEdad.setFont(new java.awt.Font("Eras Medium ITC", 1, 16)); // NOI18N
+        lblEdad.setText("Edad:");
+
+        txtApellidos.setEditable(false);
+        txtApellidos.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtApellidos.setForeground(new java.awt.Color(52, 52, 52));
+
+        txtNombres.setEditable(false);
+        txtNombres.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtNombres.setForeground(new java.awt.Color(52, 52, 52));
+
+        txtEdad.setEditable(false);
+        txtEdad.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtEdad.setForeground(new java.awt.Color(52, 52, 52));
+
+        javax.swing.GroupLayout panelCondLayout = new javax.swing.GroupLayout(panelCond);
+        panelCond.setLayout(panelCondLayout);
+        panelCondLayout.setHorizontalGroup(
+            panelCondLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCondLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelCondLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelCondLayout.createSequentialGroup()
+                        .addGroup(panelCondLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEdad)
+                            .addComponent(lblApellidos))
+                        .addGap(24, 24, 24)
+                        .addGroup(panelCondLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombres)
+                            .addComponent(txtApellidos)
+                            .addComponent(txtEdad)))
+                    .addGroup(panelCondLayout.createSequentialGroup()
+                        .addComponent(lblNombres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(165, 165, 165)))
+                .addGap(22, 22, 22))
+        );
+        panelCondLayout.setVerticalGroup(
+            panelCondLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCondLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelCondLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCondLayout.createSequentialGroup()
+                        .addGroup(panelCondLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNombres))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelCondLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblApellidos))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelCondLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEdad)))
+                    .addComponent(btnConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelDet2.add(panelCond, java.awt.BorderLayout.CENTER);
+
+        lblSituacion1.setBackground(new java.awt.Color(77, 148, 148));
+        lblSituacion1.setFont(new java.awt.Font("Eras Bold ITC", 0, 20)); // NOI18N
+        lblSituacion1.setForeground(new java.awt.Color(255, 255, 255));
+        lblSituacion1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSituacion1.setText("Conductor");
+        lblSituacion1.setOpaque(true);
+        panelDet2.add(lblSituacion1, java.awt.BorderLayout.PAGE_START);
+
+        lblNumVehiculo.setFont(new java.awt.Font("Eras Medium ITC", 1, 16)); // NOI18N
+        lblNumVehiculo.setText("No. Vehículo:");
+
+        lblModelo.setFont(new java.awt.Font("Eras Medium ITC", 1, 16)); // NOI18N
+        lblModelo.setText("Modelo:");
+
+        lblColor.setFont(new java.awt.Font("Eras Medium ITC", 1, 16)); // NOI18N
+        lblColor.setText("Color:");
+
+        lblMarca.setFont(new java.awt.Font("Eras Medium ITC", 1, 16)); // NOI18N
+        lblMarca.setText("Marca:");
+
+        lblMotor.setFont(new java.awt.Font("Eras Medium ITC", 1, 16)); // NOI18N
+        lblMotor.setText("Motor:");
+
+        lblCapacidad.setFont(new java.awt.Font("Eras Medium ITC", 1, 16)); // NOI18N
+        lblCapacidad.setText("Capacidad:");
+
+        txtNumVehiculo.setEditable(false);
+        txtNumVehiculo.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtNumVehiculo.setForeground(new java.awt.Color(52, 52, 52));
+
+        txtModelo.setEditable(false);
+        txtModelo.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtModelo.setForeground(new java.awt.Color(52, 52, 52));
+
+        txtColor.setEditable(false);
+        txtColor.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtColor.setForeground(new java.awt.Color(52, 52, 52));
+
+        txtMarca.setEditable(false);
+        txtMarca.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtMarca.setForeground(new java.awt.Color(52, 52, 52));
+
+        txtMotor.setEditable(false);
+        txtMotor.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtMotor.setForeground(new java.awt.Color(52, 52, 52));
+
+        txtCapacidad.setEditable(false);
+        txtCapacidad.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtCapacidad.setForeground(new java.awt.Color(52, 52, 52));
+
+        lblPlaca.setFont(new java.awt.Font("Eras Medium ITC", 1, 16)); // NOI18N
+        lblPlaca.setText("Placa:");
+
+        txtPlaca.setEditable(false);
+        txtPlaca.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtPlaca.setForeground(new java.awt.Color(52, 52, 52));
+
+        lblCilindros.setFont(new java.awt.Font("Eras Medium ITC", 1, 16)); // NOI18N
+        lblCilindros.setText("Cilindros:");
+
+        txtCilindros.setEditable(false);
+        txtCilindros.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtCilindros.setForeground(new java.awt.Color(52, 52, 52));
+
+        javax.swing.GroupLayout panelDetallesLayout = new javax.swing.GroupLayout(panelDetalles);
+        panelDetalles.setLayout(panelDetallesLayout);
+        panelDetallesLayout.setHorizontalGroup(
+            panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDetallesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNumVehiculo)
+                    .addComponent(lblModelo)
+                    .addComponent(lblCilindros)
+                    .addComponent(lblPlaca))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCilindros, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                    .addComponent(txtModelo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNumVehiculo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPlaca))
+                .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelDetallesLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMarca)
+                            .addComponent(lblColor)
+                            .addComponent(lblMotor))
+                        .addGap(43, 43, 43))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDetallesLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCapacidad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtColor, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                    .addComponent(txtMarca, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCapacidad)
+                    .addComponent(txtMotor, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelDet2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, Short.MAX_VALUE)
+                .addGap(35, 35, 35))
+        );
+        panelDetallesLayout.setVerticalGroup(
+            panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDetallesLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelDet2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelDetallesLayout.createSequentialGroup()
+                        .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblMarca)
+                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblColor)
+                            .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelDetallesLayout.createSequentialGroup()
+                        .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelDetallesLayout.createSequentialGroup()
+                                .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelDetallesLayout.createSequentialGroup()
+                                        .addComponent(txtNumVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelDetallesLayout.createSequentialGroup()
+                                        .addComponent(lblNumVehiculo)
+                                        .addGap(23, 23, 23)
+                                        .addComponent(lblModelo)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCilindros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtMotor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblMotor)
+                                .addComponent(lblCilindros)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCapacidad)
+                            .addComponent(lblPlaca))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelDet.setViewportView(panelDetalles);
+
+        javax.swing.GroupLayout panelContenidoLayout = new javax.swing.GroupLayout(panelContenido);
+        panelContenido.setLayout(panelContenidoLayout);
+        panelContenidoLayout.setHorizontalGroup(
+            panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelDet, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
+        );
+        panelContenidoLayout.setVerticalGroup(
+            panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContenidoLayout.createSequentialGroup()
+                .addComponent(panelVehiculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(panelDet))
+        );
+
+        getContentPane().add(panelContenido, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         ((BasicInternalFrameUI) this.getUI()).setNorthPane(null);
+        JTableHeader th; 
+        th = tblVehiculos.getTableHeader();
+        th.setFont(new java.awt.Font("Eras Medium ITC", 1, 15)); 
+        tblVehiculos.setModel(vh.verVehiculos());
+        ImageIcon img[] = new ImageIcon[9];
+        img[0] = new ImageIcon(getClass().getResource("/Imagenes/14.icono_addCliente.png"));
+        img[1] = new ImageIcon(getClass().getResource("/Imagenes/15.modificar_cliente.png"));
+        img[2] = new ImageIcon(getClass().getResource("/Imagenes/16.eliminar_cliente.png"));
+        img[3] = new ImageIcon(getClass().getResource("/Imagenes/17.check.png"));
+        img[4] = new ImageIcon(getClass().getResource("/Imagenes/18.cancelar.png"));
+        img[5] = new ImageIcon(getClass().getResource("/Imagenes/19.conductor.png"));
+        redi.escalarImagen(btnAgregarEmp, img[0]);
+        redi.escalarImagen(btnModificarEmp, img[1]);
+        redi.escalarImagen(btnEliminarEmp, img[2]);
+        redi.escalarImagen(btnCheck, img[3]);
+        redi.escalarImagen(btnCancelar, img[4]);
+        redi.escalarImagen(btnConductor, img[5]);
+        this.btnCheck.setVisible(false);
+        this.btnCancelar.setVisible(false);
     }//GEN-LAST:event_formInternalFrameOpened
+
+    private void btnAgregarEmpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpMouseEntered
+        redi.escalarImagen2(btnAgregarEmp, new ImageIcon(getClass().getResource("/Imagenes/14.icono_addCliente.png")));
+    }//GEN-LAST:event_btnAgregarEmpMouseEntered
+
+    private void btnAgregarEmpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpMouseExited
+        redi.escalarImagen(btnAgregarEmp, new ImageIcon(getClass().getResource("/Imagenes/14.icono_addCliente.png")));
+    }//GEN-LAST:event_btnAgregarEmpMouseExited
+
+    private void btnAgregarEmpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpMousePressed
+        btnAgregarEmp.setOpaque(true);
+    }//GEN-LAST:event_btnAgregarEmpMousePressed
+
+    private void btnAgregarEmpMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpMouseReleased
+        btnAgregarEmp.setOpaque(false);
+    }//GEN-LAST:event_btnAgregarEmpMouseReleased
+
+    private void btnModificarEmpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarEmpMouseEntered
+        redi.escalarImagen2(btnModificarEmp, new ImageIcon(getClass().getResource("/Imagenes/15.modificar_cliente.png")));
+    }//GEN-LAST:event_btnModificarEmpMouseEntered
+
+    private void btnModificarEmpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarEmpMouseExited
+        redi.escalarImagen(btnModificarEmp, new ImageIcon(getClass().getResource("/Imagenes/15.modificar_cliente.png")));
+    }//GEN-LAST:event_btnModificarEmpMouseExited
+
+    private void btnModificarEmpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarEmpMousePressed
+        btnModificarEmp.setOpaque(true);
+    }//GEN-LAST:event_btnModificarEmpMousePressed
+
+    private void btnModificarEmpMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarEmpMouseReleased
+        btnModificarEmp.setOpaque(false);
+    }//GEN-LAST:event_btnModificarEmpMouseReleased
+
+    private void btnModificarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarEmpActionPerformed
+        this.txtNumVehiculo.setEditable(true);
+        this.txtMarca.setEditable(true);
+        this.txtModelo.setEditable(true);
+        this.txtColor.setEditable(true);
+        this.txtCilindros.setEditable(true);
+        this.txtMotor.setEditable(true);
+        this.txtPlaca.setEditable(true);
+        this.txtCapacidad.setEditable(true);
+    }//GEN-LAST:event_btnModificarEmpActionPerformed
+
+    private void btnEliminarEmpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarEmpMouseEntered
+        redi.escalarImagen2(btnEliminarEmp, new ImageIcon(getClass().getResource("/Imagenes/16.eliminar_cliente.png")));
+    }//GEN-LAST:event_btnEliminarEmpMouseEntered
+
+    private void btnEliminarEmpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarEmpMouseExited
+        redi.escalarImagen(btnEliminarEmp, new ImageIcon(getClass().getResource("/Imagenes/16.eliminar_cliente.png")));
+    }//GEN-LAST:event_btnEliminarEmpMouseExited
+
+    private void btnEliminarEmpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarEmpMousePressed
+        btnEliminarEmp.setOpaque(true);
+    }//GEN-LAST:event_btnEliminarEmpMousePressed
+
+    private void btnEliminarEmpMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarEmpMouseReleased
+        btnEliminarEmp.setOpaque(true);
+    }//GEN-LAST:event_btnEliminarEmpMouseReleased
+
+    private void btnCheckMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCheckMouseEntered
+        redi.escalarImagen2(btnCheck, new ImageIcon(getClass().getResource("/Imagenes/17.check.png")));
+    }//GEN-LAST:event_btnCheckMouseEntered
+
+    private void btnCheckMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCheckMouseExited
+        redi.escalarImagen(btnCheck, new ImageIcon(getClass().getResource("/Imagenes/17.check.png")));
+    }//GEN-LAST:event_btnCheckMouseExited
+
+    private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
+
+        if (JOptionPane.showConfirmDialog(this, "Modificó Datos\n¿Desea continuar?", "Cerrar", JOptionPane.YES_NO_OPTION, 0,
+            new ImageIcon(getClass().getResource("/Imagenes/modificar.png"))) == JOptionPane.YES_OPTION) {
+        //Actualiza los datos con procedimiento almacenado
+        this.txtNumVehiculo.setEditable(true);
+        this.txtMarca.setEditable(true);
+        this.txtModelo.setEditable(true);
+        this.txtColor.setEditable(true);
+        this.txtCilindros.setEditable(true);
+        this.txtMotor.setEditable(true);
+        this.txtPlaca.setEditable(true);
+        this.txtCapacidad.setEditable(true);
+        this.btnCheck.setVisible(false);
+        this.btnCancelar.setVisible(false);
+        }
+    }//GEN-LAST:event_btnCheckActionPerformed
+
+    private void btnCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseEntered
+        redi.escalarImagen2(btnCancelar, new ImageIcon(getClass().getResource("/Imagenes/18.cancelar.png")));
+    }//GEN-LAST:event_btnCancelarMouseEntered
+
+    private void btnCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseExited
+        redi.escalarImagen(btnCancelar, new ImageIcon(getClass().getResource("/Imagenes/18.cancelar.png")));
+    }//GEN-LAST:event_btnCancelarMouseExited
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        if (JOptionPane.showConfirmDialog(this, "¿Desea cancelar los cambios?", "Cerrar", JOptionPane.YES_NO_OPTION, 0,
+            new ImageIcon(getClass().getResource("/Imagenes/modificar.png"))) == JOptionPane.YES_OPTION) {
+        //Cancela los cambios hechos
+        this.txtNumVehiculo.setEditable(true);
+        this.txtMarca.setEditable(true);
+        this.txtModelo.setEditable(true);
+        this.txtColor.setEditable(true);
+        this.txtCilindros.setEditable(true);
+        this.txtMotor.setEditable(true);
+        this.txtPlaca.setEditable(true);
+        this.txtCapacidad.setEditable(true);
+        this.btnCheck.setVisible(false);
+        this.btnCancelar.setVisible(false);
+        }
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void mostrarVehiculos(){
+        int filaS = this.tblVehiculos.getSelectedRow();
+        if(filaS>=0){
+            Object datos[]; 
+            datos = new Object[11]; 
+            for(int i=0; i<11; i++){
+                datos[i] = tblVehiculos.getValueAt(filaS, i);
+            }
+            int nVehiculo = (int) datos[0];
+            int modelo = (int) datos[2];
+            int cilindros = (int) datos[4];
+            float capacidad = (float) datos[7];
+            int edad = (int) datos[10];
+            this.txtNumVehiculo.setText(Integer.toString(nVehiculo));
+            this.txtMarca.setText((String) datos[1]);
+            this.txtModelo.setText(Integer.toString(modelo));
+            this.txtColor.setText((String) datos[3]);
+            this.txtCilindros.setText(Integer.toString(cilindros));
+            this.txtMotor.setText((String) datos[5]);
+            this.txtPlaca.setText((String) datos[6]);
+            this.txtCapacidad.setText(Float.toString(capacidad));
+            this.txtNombres.setText((String) datos[8]);
+            this.txtApellidos.setText((String) datos[9]);
+            this.txtEdad.setText(Integer.toString(edad));
+        }
+    }
+    
+    private void tblVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVehiculosMouseClicked
+        if(evt.getClickCount()==2){//Si se hace doble click
+            mostrarVehiculos();
+        }
+    }//GEN-LAST:event_tblVehiculosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarEmp;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCheck;
+    private javax.swing.JButton btnConductor;
+    private javax.swing.JButton btnEliminarEmp;
+    private javax.swing.JButton btnModificarEmp;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblApellidos;
+    private javax.swing.JLabel lblCapacidad;
+    private javax.swing.JLabel lblCilindros;
+    private javax.swing.JLabel lblColor;
+    private javax.swing.JLabel lblEdad;
+    private javax.swing.JLabel lblMarca;
+    private javax.swing.JLabel lblModelo;
+    private javax.swing.JLabel lblMotor;
+    private javax.swing.JLabel lblNombres;
+    private javax.swing.JLabel lblNumVehiculo;
+    private javax.swing.JLabel lblPlaca;
+    private javax.swing.JLabel lblSituacion1;
+    private javax.swing.JPanel panelCond;
+    private javax.swing.JPanel panelContenido;
+    private javax.swing.JScrollPane panelDet;
+    private javax.swing.JPanel panelDet2;
+    private javax.swing.JPanel panelDetalles;
+    private javax.swing.JPanel panelOpciones;
+    private javax.swing.JPanel panelVehiculos;
+    private javax.swing.JTable tblVehiculos;
+    private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCapacidad;
+    private javax.swing.JTextField txtCilindros;
+    private javax.swing.JTextField txtColor;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtModelo;
+    private javax.swing.JTextField txtMotor;
+    private javax.swing.JTextField txtNombres;
+    private javax.swing.JTextField txtNumVehiculo;
+    private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
 }
