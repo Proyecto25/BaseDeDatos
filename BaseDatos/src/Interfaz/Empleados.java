@@ -32,6 +32,7 @@ public class Empleados extends javax.swing.JInternalFrame {
         btnEliminarEmp = new javax.swing.JButton();
         btnCheck = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        btnCheck1 = new javax.swing.JButton();
         panelContenido = new javax.swing.JPanel();
         panelEmpleados = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -109,6 +110,11 @@ public class Empleados extends javax.swing.JInternalFrame {
                 btnAgregarEmpMouseReleased(evt);
             }
         });
+        btnAgregarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarEmpActionPerformed(evt);
+            }
+        });
 
         btnModificarEmp.setBackground(new java.awt.Color(54, 68, 97));
         btnModificarEmp.setToolTipText("Modificar Datos del Empleado");
@@ -160,6 +166,11 @@ public class Empleados extends javax.swing.JInternalFrame {
                 btnEliminarEmpMouseReleased(evt);
             }
         });
+        btnEliminarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarEmpActionPerformed(evt);
+            }
+        });
 
         btnCheck.setAlignmentY(0.2F);
         btnCheck.setBorder(null);
@@ -200,6 +211,26 @@ public class Empleados extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCheck1.setAlignmentY(0.2F);
+        btnCheck1.setBorder(null);
+        btnCheck1.setBorderPainted(false);
+        btnCheck1.setContentAreaFilled(false);
+        btnCheck1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCheck1.setFocusPainted(false);
+        btnCheck1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCheck1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCheck1MouseExited(evt);
+            }
+        });
+        btnCheck1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheck1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelOpcionesLayout = new javax.swing.GroupLayout(panelOpciones);
         panelOpciones.setLayout(panelOpcionesLayout);
         panelOpcionesLayout.setHorizontalGroup(
@@ -213,7 +244,9 @@ public class Empleados extends javax.swing.JInternalFrame {
                 .addComponent(btnEliminarEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCheck1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -223,16 +256,19 @@ public class Empleados extends javax.swing.JInternalFrame {
                 .addGap(2, 2, 2)
                 .addGroup(panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelOpcionesLayout.createSequentialGroup()
-                        .addGroup(panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCheck, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelOpcionesLayout.createSequentialGroup()
                         .addGroup(panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnModificarEmp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                             .addComponent(btnAgregarEmp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnEliminarEmp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(2, 2, 2))))
+                        .addGap(2, 2, 2))
+                    .addGroup(panelOpcionesLayout.createSequentialGroup()
+                        .addGroup(panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCheck1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         getContentPane().add(panelOpciones, java.awt.BorderLayout.NORTH);
@@ -497,9 +533,11 @@ public class Empleados extends javax.swing.JInternalFrame {
         redi.escalarImagen(btnModificarEmp, img[1]);
         redi.escalarImagen(btnEliminarEmp, img[2]);
         redi.escalarImagen(btnCheck, img[3]);
+        redi.escalarImagen(btnCheck1, img[3]);
         redi.escalarImagen(btnCancelar, img[4]);
         this.btnCheck.setVisible(false);
         this.btnCancelar.setVisible(false);
+        this.btnCheck1.setVisible(false);
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void btnAgregarEmpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpMouseEntered
@@ -557,17 +595,12 @@ public class Empleados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblEmpleadosMouseClicked
 
     private void btnModificarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarEmpActionPerformed
-        this.txtNumEmp.setEditable(true);
-        this.txtDpi.setEditable(true);
-        this.txtNombres.setEditable(true);
-        this.txtApellidos.setEditable(true);
-        this.txtGen.setEditable(true);
-        this.txtNit.setEditable(true);
-        this.txtCargo.setEditable(true);
-        this.txtTel.setEditable(true);
-        this.txtEdad.setEditable(true);
-        this.txtFecha.setEditable(true);
-        this.txtDir.setEditable(true);
+        this.btnCheck1.setVisible(true);                
+        this.btnCancelar.setVisible(true);
+        this.btnAgregarEmp.setVisible(false);
+        this.btnModificarEmp.setVisible(false);
+        this.btnEliminarEmp.setVisible(false);
+        habilitarJtext();
     }//GEN-LAST:event_btnModificarEmpActionPerformed
 
     private void btnCheckMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCheckMouseEntered
@@ -579,25 +612,18 @@ public class Empleados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCheckMouseExited
 
     private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
-
-        if (JOptionPane.showConfirmDialog(this, "Modificó Datos\n¿Desea continuar?", "Cerrar", JOptionPane.YES_NO_OPTION, 0,
+        if (JOptionPane.showConfirmDialog(this, "Ingresara Datos\n¿Desea continuar?", "Cerrar", JOptionPane.YES_NO_OPTION, 0,
             new ImageIcon(getClass().getResource("/Imagenes/modificar.png"))) == JOptionPane.YES_OPTION) {
-        //Actualiza los datos con procedimiento almacenado
-        this.txtNumEmp.setEditable(true);
-        this.txtDpi.setEditable(true);
-        this.txtNombres.setEditable(true);
-        this.txtApellidos.setEditable(true);
-        this.txtGen.setEditable(true);
-        this.txtNit.setEditable(true);
-        this.txtCargo.setEditable(true);
-        this.txtTel.setEditable(true);
-        this.txtEdad.setEditable(true);
-        this.txtFecha.setEditable(true);
-        this.txtDir.setEditable(true);
-        this.btnCheck.setVisible(false);
+        Emp.insertarEmpleado();
+        tblEmpleados.setModel(Emp.verEmpleados());
+        this.btnCheck.setVisible(false);        
         this.btnCancelar.setVisible(false);
+        this.btnAgregarEmp.setVisible(true);
+        this.btnModificarEmp.setVisible(true);
+        this.btnEliminarEmp.setVisible(true);
+        limpiar();
+        desabilitarJtext();
         }
-
     }//GEN-LAST:event_btnCheckActionPerformed
 
     private void btnCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseEntered
@@ -612,21 +638,54 @@ public class Empleados extends javax.swing.JInternalFrame {
         if (JOptionPane.showConfirmDialog(this, "¿Desea cancelar los cambios?", "Cerrar", JOptionPane.YES_NO_OPTION, 0,
             new ImageIcon(getClass().getResource("/Imagenes/modificar.png"))) == JOptionPane.YES_OPTION) {
             //Cancela los cambios hechos
-            this.txtNumEmp.setEditable(true);
-            this.txtDpi.setEditable(true);
-            this.txtNombres.setEditable(true);
-            this.txtApellidos.setEditable(true);
-            this.txtGen.setEditable(true);
-            this.txtNit.setEditable(true);
-            this.txtCargo.setEditable(true);
-            this.txtTel.setEditable(true);
-            this.txtEdad.setEditable(true);
-            this.txtFecha.setEditable(true);
-            this.txtDir.setEditable(true);
+            desabilitarJtext();
+            limpiar();
+            this.btnCheck1.setVisible(false);
             this.btnCheck.setVisible(false);
             this.btnCancelar.setVisible(false);
+            this.btnAgregarEmp.setVisible(true);
+            this.btnModificarEmp.setVisible(true);
+            this.btnEliminarEmp.setVisible(true);    
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnCheck1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCheck1MouseEntered
+        redi.escalarImagen2(btnCheck1, new ImageIcon(getClass().getResource("/Imagenes/17.check.png")));
+    }//GEN-LAST:event_btnCheck1MouseEntered
+
+    private void btnCheck1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCheck1MouseExited
+        redi.escalarImagen(btnCheck1, new ImageIcon(getClass().getResource("/Imagenes/17.check.png")));
+    }//GEN-LAST:event_btnCheck1MouseExited
+
+    private void btnCheck1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheck1ActionPerformed
+        Emp.ActualizarCliente();
+        tblEmpleados.setModel(Emp.verEmpleados());
+        this.btnAgregarEmp.setVisible(true);
+        this.btnModificarEmp.setVisible(true);
+        this.btnEliminarEmp.setVisible(true);          
+        this.btnCheck.setVisible(false);
+        this.btnCheck1.setVisible(false);
+        this.btnCancelar.setVisible(false);
+        desabilitarJtext();
+        limpiar();
+    }//GEN-LAST:event_btnCheck1ActionPerformed
+
+    private void btnAgregarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEmpActionPerformed
+        this.btnCheck.setVisible(true);                      
+        this.btnCancelar.setVisible(true);
+        this.btnAgregarEmp.setVisible(false);
+        this.btnModificarEmp.setVisible(false);
+        this.btnEliminarEmp.setVisible(false);
+        habilitarJtext();  
+    }//GEN-LAST:event_btnAgregarEmpActionPerformed
+
+    private void btnEliminarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEmpActionPerformed
+        if (JOptionPane.showConfirmDialog(this, "Eliminara Datos\n¿Desea continuar?", "Eliminar", JOptionPane.YES_NO_OPTION, 0,
+        new ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))) == JOptionPane.YES_OPTION) {
+        Emp.eliminarEmpleados();
+        tblEmpleados.setModel(Emp.verEmpleados());
+        }   
+    }//GEN-LAST:event_btnEliminarEmpActionPerformed
 
     private void mostrarEmp(){
         int filaS = this.tblEmpleados.getSelectedRow();
@@ -651,12 +710,52 @@ public class Empleados extends javax.swing.JInternalFrame {
             this.txtGen.setText((String) datos[9]);
             this.txtCargo.setText((String) datos[10]);
         }
-    } 
+    }
+    void habilitarJtext(){
+        this.txtNumEmp.setEditable(true);
+        this.txtDpi.setEditable(true);
+        this.txtNombres.setEditable(true);
+        this.txtApellidos.setEditable(true);
+        this.txtGen.setEditable(true);
+        this.txtNit.setEditable(true);
+        this.txtCargo.setEditable(true);
+        this.txtTel.setEditable(true);
+        this.txtEdad.setEditable(true);
+        this.txtFecha.setEditable(true);
+        this.txtDir.setEditable(true);
+    }   
+    void desabilitarJtext(){
+        this.txtNumEmp.setEditable(false);
+        this.txtDpi.setEditable(false);
+        this.txtNombres.setEditable(false);
+        this.txtApellidos.setEditable(false);
+        this.txtGen.setEditable(false);
+        this.txtNit.setEditable(false);
+        this.txtCargo.setEditable(false);
+        this.txtTel.setEditable(false);
+        this.txtEdad.setEditable(false);
+        this.txtFecha.setEditable(false);
+        this.txtDir.setEditable(false);
+    }
+    void limpiar(){
+        this.txtNumEmp.setText("");
+        this.txtDpi.setText("");
+        this.txtNombres.setText("");
+        this.txtApellidos.setText("");
+        this.txtGen.setText("");
+        this.txtNit.setText("");
+        this.txtCargo.setText("");
+        this.txtTel.setText("");
+        this.txtEdad.setText("");
+        this.txtFecha.setText("");
+        this.txtDir.setText("");   
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarEmp;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCheck;
+    private javax.swing.JButton btnCheck1;
     private javax.swing.JButton btnEliminarEmp;
     private javax.swing.JButton btnModificarEmp;
     private javax.swing.Box.Filler filler1;
@@ -679,17 +778,17 @@ public class Empleados extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelDetalles;
     private javax.swing.JPanel panelEmpleados;
     private javax.swing.JPanel panelOpciones;
-    private javax.swing.JTable tblEmpleados;
-    private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtCargo;
-    private javax.swing.JTextField txtDir;
-    private javax.swing.JTextField txtDpi;
-    private javax.swing.JTextField txtEdad;
-    private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtGen;
-    private javax.swing.JTextField txtNit;
-    private javax.swing.JTextField txtNombres;
-    private javax.swing.JTextField txtNumEmp;
-    private javax.swing.JTextField txtTel;
+    public static javax.swing.JTable tblEmpleados;
+    public static javax.swing.JTextField txtApellidos;
+    public static javax.swing.JTextField txtCargo;
+    public static javax.swing.JTextField txtDir;
+    public static javax.swing.JTextField txtDpi;
+    public static javax.swing.JTextField txtEdad;
+    public static javax.swing.JTextField txtFecha;
+    public static javax.swing.JTextField txtGen;
+    public static javax.swing.JTextField txtNit;
+    public static javax.swing.JTextField txtNombres;
+    public static javax.swing.JTextField txtNumEmp;
+    public static javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
 }

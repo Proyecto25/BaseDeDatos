@@ -5,22 +5,21 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.JTableHeader;
-import ConexionBaseDatos.Conexion;
+/*import ConexionBaseDatos.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import java.util.logging.Logger;*/
 
 public class Clientes extends javax.swing.JInternalFrame {
-    Conexion con = new Conexion();
-    Connection cn = con.ConnecrDb();
+
     Cliente cl = new Cliente();
     RedimensionarImg redi = new RedimensionarImg();
-    
+
     public Clientes() {
         initComponents();
+
     }
 
     /**
@@ -39,6 +38,7 @@ public class Clientes extends javax.swing.JInternalFrame {
         btnEliminarCliente = new javax.swing.JButton();
         btnCheck = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        btnCheck1 = new javax.swing.JButton();
         panelContenido = new javax.swing.JPanel();
         panelClientes = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -229,6 +229,26 @@ public class Clientes extends javax.swing.JInternalFrame {
             }
         });
 
+        btnCheck1.setAlignmentY(0.2F);
+        btnCheck1.setBorder(null);
+        btnCheck1.setBorderPainted(false);
+        btnCheck1.setContentAreaFilled(false);
+        btnCheck1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCheck1.setFocusPainted(false);
+        btnCheck1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCheck1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCheck1MouseExited(evt);
+            }
+        });
+        btnCheck1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCheck1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelOpcionesLayout = new javax.swing.GroupLayout(panelOpciones);
         panelOpciones.setLayout(panelOpcionesLayout);
         panelOpcionesLayout.setHorizontalGroup(
@@ -240,8 +260,10 @@ public class Clientes extends javax.swing.JInternalFrame {
                 .addComponent(btnModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCheck1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -251,6 +273,7 @@ public class Clientes extends javax.swing.JInternalFrame {
             .addGroup(panelOpcionesLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCheck1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnModificarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -292,7 +315,7 @@ public class Clientes extends javax.swing.JInternalFrame {
         panelClientes.setLayout(panelClientesLayout);
         panelClientesLayout.setHorizontalGroup(
             panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
         );
         panelClientesLayout.setVerticalGroup(
             panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,7 +429,7 @@ public class Clientes extends javax.swing.JInternalFrame {
                             .addComponent(txtDpi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelDetallesLayout.createSequentialGroup()
                                 .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                                    .addComponent(txtMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                                     .addComponent(txtAldea))
                                 .addGap(7, 7, 7)
                                 .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -414,7 +437,7 @@ public class Clientes extends javax.swing.JInternalFrame {
                                 .addComponent(lblCaserio, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCaserio, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                                    .addComponent(txtCaserio, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                                     .addComponent(txtBoleto)))
                             .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(panelDetallesLayout.createSequentialGroup()
@@ -445,7 +468,7 @@ public class Clientes extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(filler3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addComponent(panelDet2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, Short.MAX_VALUE)
+                .addComponent(panelDet2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, Short.MAX_VALUE)
                 .addGap(24, 24, 24))
         );
         panelDetallesLayout.setVerticalGroup(
@@ -522,44 +545,19 @@ public class Clientes extends javax.swing.JInternalFrame {
         img[1] = new ImageIcon(getClass().getResource("/Imagenes/15.modificar_cliente.png"));
         img[2] = new ImageIcon(getClass().getResource("/Imagenes/16.eliminar_cliente.png"));
         img[3] = new ImageIcon(getClass().getResource("/Imagenes/17.check.png"));
-        img[4] = new ImageIcon(getClass().getResource("/Imagenes/18.cancelar.png"));
+        img[4] = new ImageIcon(getClass().getResource("/Imagenes/17.check1.png"));
+        img[5] = new ImageIcon(getClass().getResource("/Imagenes/18.cancelar.png"));
         redi.escalarImagen(btnAgregarCliente, img[0]);
         redi.escalarImagen(btnModificarCliente, img[1]);
         redi.escalarImagen(btnEliminarCliente, img[2]);
         redi.escalarImagen(btnCheck, img[3]);
-        redi.escalarImagen(btnCancelar, img[4]);
+        redi.escalarImagen(btnCheck1, img[4]);
+        redi.escalarImagen(btnCancelar, img[5]);
         this.btnCheck.setVisible(false);
+        this.btnCheck1.setVisible(false);
         this.btnCancelar.setVisible(false);
     }//GEN-LAST:event_formInternalFrameOpened
-    private void mostrarCliente(){
-        int filaS = this.tablaClientes.getSelectedRow();
-        if(filaS>=0){
-            Object datos[]; 
-            datos = new Object[8]; 
-            for(int i=0; i<8; i++){
-                datos[i] = tablaClientes.getValueAt(filaS, i);
-            }
-            int nCliente = (int) datos[0];
-            this.txtNumCliente.setText(Integer.toString(nCliente));
-            this.txtNombres.setText((String) datos[1]);
-            this.txtApellidos.setText((String) datos[2]);
-            this.txtDpi.setText((String) datos[3]);
-            this.txtDireccion.setText((String) datos[4]);
-            this.txtMunicipio.setText((String) datos[5]);
-            if(datos[6]==null){
-                this.txtAldea.setText(" - - - -");
-            }else{
-             this.txtAldea.setText((String) datos[6]);   
-            }
-            if(datos[7]==null){
-                this.txtCaserio.setText(" - - - -");
-            }else{
-                this.txtCaserio.setText((String) datos[7]);
-            }
-            
-        }
-    }   
-    
+   
     private void tablaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaClientesMouseClicked
         if(evt.getClickCount()==2){//Si se hace doble click
             mostrarCliente();
@@ -616,123 +614,58 @@ public class Clientes extends javax.swing.JInternalFrame {
 
     private void btnCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Modificó Datos\n¿Desea continuar?", "Cerrar", JOptionPane.YES_NO_OPTION, 0,
-                new ImageIcon(getClass().getResource("/Imagenes/modificar.png"))) == JOptionPane.YES_OPTION) {
+            new ImageIcon(getClass().getResource("/Imagenes/modificar.png"))) == JOptionPane.YES_OPTION) {
             //Actualiza los datos con procedimiento almacenado
+            cl.insertarCliente();
             this.btnAgregarCliente.setVisible(true);
             this.btnModificarCliente.setVisible(true);
             this.btnEliminarCliente.setVisible(true);
-        if (("".equals(txtNumCliente.getText()))||("".equals(txtDpi.getText()))||("".equals(txtNombres.getText()))||
-            ("".equals(txtApellidos.getText()))||("".equals(txtMunicipio.getText()))
-            ||("".equals(txtAldea.getText()))||
-            ("".equals(txtDireccion.getText()))||("".equals(txtTelefono.getText()))||("".equals(txtBoleto.getText()))){
-            JOptionPane.showMessageDialog(null, "Hacen falta datos, por favor ingreselos");        
-        }else{     
-        try {
-            PreparedStatement cliente = cn.prepareStatement("call mydb.InsertarCliente(?,?,?,?,?,?,?,?,null,?)");
-            cliente.setString(1, txtNumCliente.getText());
-            cliente.setString(2, txtNombres.getText());
-            cliente.setString(3, txtApellidos.getText());
-            cliente.setString(4, txtMunicipio.getText());
-            cliente.setString(5, txtDireccion.getText());
-            cliente.setString(6, txtTelefono.getText());
-            cliente.setString(7, txtDpi.getText());
-            cliente.setString(8, txtBoleto.getText());   
-            //cliente.setString(9, txtCaserio.getText());
-            cliente.setString(9, txtAldea.getText());            
-            cliente.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Datos Guardados"); 
             tablaClientes.setModel(cl.verClientes());
-            limpiar();
-        } catch (SQLException ex) {
-            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }            
-            this.txtNumCliente.setEditable(false);
-            this.txtDpi.setEditable(false);
-            this.txtNombres.setEditable(false);
-            this.txtApellidos.setEditable(false);
-            this.txtMunicipio.setEditable(false);
-            this.txtAldea.setEditable(false);
-            this.txtCaserio.setEditable(false);
-            this.txtDireccion.setEditable(false);
-            this.txtTelefono.setEditable(false);
-            this.txtBoleto.setEditable(false);
+            desabilitarJtext();
             this.btnCheck.setVisible(false);
             this.btnCancelar.setVisible(false);   
-            
+            limpiar();
         }        
     }//GEN-LAST:event_btnCheckActionPerformed
-    void limpiar(){
-    txtNumCliente.setText("");
-    txtDpi.setText("");
-    txtNombres.setText("");
-    txtApellidos.setText("");
-    txtMunicipio.setText("");
-    txtAldea.setText("");
-    txtCaserio.setText("");    
-    txtDireccion.setText("");
-    txtTelefono.setText("");
-    txtBoleto.setText("");    
-}
+
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
-
         if (JOptionPane.showConfirmDialog(this, "¿Desea cancelar los cambios?", "Cerrar", JOptionPane.YES_NO_OPTION, 0,
-                new ImageIcon(getClass().getResource("/Imagenes/modificar.png"))) == JOptionPane.YES_OPTION) {
+            new ImageIcon(getClass().getResource("/Imagenes/modificar.png"))) == JOptionPane.YES_OPTION) {
             //Cancela los cambios
             this.btnAgregarCliente.setVisible(true);
             this.btnModificarCliente.setVisible(true);
             this.btnEliminarCliente.setVisible(true);
-            this.txtNumCliente.setEditable(false);
-            this.txtDpi.setEditable(false);
-            this.txtNombres.setEditable(false);
-            this.txtApellidos.setEditable(false);
-            this.txtMunicipio.setEditable(false);
-            this.txtAldea.setEditable(false);
-            this.txtDireccion.setEditable(false);
-            this.txtCaserio.setEditable(false);
+            desabilitarJtext();
             this.btnCheck.setVisible(false);
             this.btnCancelar.setVisible(false);
         }        
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
-        this.btnCheck.setVisible(true);
+        this.btnCheck.setVisible(true);        
         this.btnCancelar.setVisible(true);
         this.btnAgregarCliente.setVisible(false);
         this.btnModificarCliente.setVisible(false);
         this.btnEliminarCliente.setVisible(false);
-        txtNumCliente.setEditable(true);
-        txtNombres.setEditable(true);
-        txtApellidos.setEditable(true);
-        txtDpi.setEditable(true);
-        txtMunicipio.setEditable(true);
-        txtAldea.setEditable(true);
-        txtCaserio.setEditable(true);
-        txtDireccion.setEditable(true);
-        txtBoleto.setEditable(true);
-        txtTelefono.setEditable(true);
-                     
+        habilitarJtext();             
     }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
     private void btnModificarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarClienteActionPerformed
-        this.btnCheck.setVisible(true);
-        this.btnCancelar.setVisible(true);      
+        this.btnCheck.setVisible(false);
+        this.btnCheck1.setVisible(true);
+        this.btnCancelar.setVisible(true);
+        this.btnAgregarCliente.setVisible(false);
+        this.btnModificarCliente.setVisible(false);
+        this.btnEliminarCliente.setVisible(false);        
+        habilitarJtext();
     }//GEN-LAST:event_btnModificarClienteActionPerformed
 
     private void btnEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarClienteActionPerformed
-        int fila = tablaClientes.getSelectedRow();
-        String valor = tablaClientes.getValueAt(fila, 0).toString();
-        if(fila>=0){
-            try {
-                PreparedStatement pps = cn.prepareStatement("DELETE FROM cliente WHERE idCliente='"+valor+"'");
-                pps.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Datos Eliminar");   
-                tablaClientes.setModel(cl.verClientes());
-            } catch (SQLException ex) {
-                Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
-            }             
-        }        
+        if (JOptionPane.showConfirmDialog(this, "Eliminara Datos\n¿Desea continuar?", "Eliminar", JOptionPane.YES_NO_OPTION, 0,
+        new ImageIcon(getClass().getResource("/Imagenes/eliminar.png"))) == JOptionPane.YES_OPTION) {
+        cl.eliminarCliente();
+        tablaClientes.setModel(cl.verClientes());
+        }    
     }//GEN-LAST:event_btnEliminarClienteActionPerformed
 
     private void btnCheckMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCheckMouseEntered
@@ -751,10 +684,94 @@ public class Clientes extends javax.swing.JInternalFrame {
         redi.escalarImagen(btnCancelar, new ImageIcon(getClass().getResource("/Imagenes/18.cancelar.png")));
     }//GEN-LAST:event_btnCancelarMouseExited
 
+    private void btnCheck1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCheck1MouseEntered
+        redi.escalarImagen2(btnCheck1, new ImageIcon(getClass().getResource("/Imagenes/17.check1.png")));
+    }//GEN-LAST:event_btnCheck1MouseEntered
+
+    private void btnCheck1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCheck1MouseExited
+        redi.escalarImagen(btnCheck1, new ImageIcon(getClass().getResource("/Imagenes/17.check1.png")));
+    }//GEN-LAST:event_btnCheck1MouseExited
+
+    private void btnCheck1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheck1ActionPerformed
+        cl.ActualizarCliente();
+        tablaClientes.setModel(cl.verClientes());
+        this.btnAgregarCliente.setVisible(true);
+        this.btnModificarCliente.setVisible(true);
+        this.btnEliminarCliente.setVisible(true);           
+        this.btnCheck.setVisible(false);
+        this.btnCheck1.setVisible(false);
+        this.btnCancelar.setVisible(false);
+        desabilitarJtext();
+        limpiar();
+    }//GEN-LAST:event_btnCheck1ActionPerformed
+    void limpiar(){
+    txtNumCliente.setText("");
+    txtDpi.setText("");
+    txtNombres.setText("");
+    txtApellidos.setText("");
+    txtMunicipio.setText("");
+    txtAldea.setText("");
+    txtCaserio.setText("");    
+    txtDireccion.setText("");
+    txtTelefono.setText("");
+    txtBoleto.setText("");    
+    }
+    void habilitarJtext(){
+        this.txtNumCliente.setEditable(true);
+        this.txtNombres.setEditable(true);
+        this.txtApellidos.setEditable(true);
+        this.txtDpi.setEditable(true);
+        this.txtTelefono.setEditable(true); 
+        this.txtMunicipio.setEditable(true);
+        this.txtBoleto.setEditable(true);        
+        this.txtAldea.setEditable(true);
+        this.txtCaserio.setEditable(true);
+        this.txtDireccion.setEditable(true);    
+    }     
+    void desabilitarJtext(){
+        this.txtNumCliente.setEditable(false);
+        this.txtNombres.setEditable(false);
+        this.txtApellidos.setEditable(false);
+        this.txtDpi.setEditable(false);
+        this.txtTelefono.setEditable(false);
+        this.txtMunicipio.setEditable(false);
+        this.txtBoleto.setEditable(false);
+        this.txtAldea.setEditable(false);
+        this.txtCaserio.setEditable(false);
+        this.txtDireccion.setEditable(false);
+    }
+    private void mostrarCliente(){
+        int filaS = this.tablaClientes.getSelectedRow();
+        if(filaS>=0){
+            Object datos[]; 
+            datos = new Object[8]; 
+            for(int i=0; i<8; i++){
+                datos[i] = tablaClientes.getValueAt(filaS, i);
+            }
+            int nCliente = (int) datos[0];
+            this.txtNumCliente.setText(Integer.toString(nCliente));
+            this.txtNombres.setText((String) datos[1]);
+            this.txtApellidos.setText((String) datos[2]);
+            this.txtDpi.setText((String) datos[3]);
+            this.txtDireccion.setText((String) datos[4]);
+            this.txtMunicipio.setText((String) datos[5]);
+            if(datos[6]==null){
+                this.txtAldea.setText(" - - - -");
+            }else{
+             this.txtAldea.setText((String) datos[6]);   
+            }
+            if(datos[7]==null){
+                this.txtCaserio.setText(" - - - -");
+            }else{
+                this.txtCaserio.setText((String) datos[7]);
+            }            
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCheck;
+    private javax.swing.JButton btnCheck1;
     private javax.swing.JButton btnEliminarCliente;
     private javax.swing.JButton btnModificarCliente;
     private javax.swing.Box.Filler filler1;
@@ -780,16 +797,17 @@ public class Clientes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panelDet2;
     private javax.swing.JPanel panelDetalles;
     private javax.swing.JPanel panelOpciones;
-    private javax.swing.JTable tablaClientes;
-    private javax.swing.JTextField txtAldea;
-    private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtBoleto;
-    private javax.swing.JTextField txtCaserio;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtDpi;
-    private javax.swing.JTextField txtMunicipio;
-    private javax.swing.JTextField txtNombres;
-    private javax.swing.JTextField txtNumCliente;
-    private javax.swing.JTextField txtTelefono;
+    public static javax.swing.JTable tablaClientes;
+    public static javax.swing.JTextField txtAldea;
+    public static javax.swing.JTextField txtApellidos;
+    public static javax.swing.JTextField txtBoleto;
+    public static javax.swing.JTextField txtCaserio;
+    public static javax.swing.JTextField txtDireccion;
+    public static javax.swing.JTextField txtDpi;
+    public static javax.swing.JTextField txtMunicipio;
+    public static javax.swing.JTextField txtNombres;
+    public static javax.swing.JTextField txtNumCliente;
+    public static javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
+ 
 }

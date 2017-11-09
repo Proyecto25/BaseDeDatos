@@ -1,11 +1,25 @@
 package Consultas;
 
 import ConexionBaseDatos.Conexion;
+import static Interfaz.Vehiculos.tblVehiculos;
+import static Interfaz.Vehiculos.txtCapacidad;
+import static Interfaz.Vehiculos.txtCilindros;
+import static Interfaz.Vehiculos.txtColor;
+import static Interfaz.Vehiculos.txtConductor;
+import static Interfaz.Vehiculos.txtMarca;
+import static Interfaz.Vehiculos.txtModelo;
+import static Interfaz.Vehiculos.txtMotor;
+import static Interfaz.Vehiculos.txtNumVehiculo;
+import static Interfaz.Vehiculos.txtPlaca;
+
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -51,4 +65,71 @@ public class Vehiculo {
         }  
         return modeloVehiculo;
     }
+    
+ 
+    public void insertarVehiculo(){            
+        if (("".equals(txtNumVehiculo.getText()))||("".equals(txtMarca.getText()))||("".equals(txtModelo.getText()))||
+            ("".equals(txtColor.getText()))||("".equals(txtCilindros.getText()))
+            ||("".equals(txtMotor.getText()))||("".equals(txtPlaca.getText()))
+            ||("".equals(txtCapacidad.getText()))||("".equals(txtConductor.getText()))){
+            JOptionPane.showMessageDialog(null, "Hacen falta datos, por favor ingreselos");        
+        }else{     
+        try {
+            PreparedStatement cliente = con.prepareStatement("call mydb.InsertarVehiculo(?,?,?,?,?,?,?,?,?)");
+            cliente.setString(1, txtNumVehiculo.getText());
+            cliente.setString(2, txtMarca.getText());
+            cliente.setString(3, txtModelo.getText());
+            cliente.setString(4, txtColor.getText());
+            cliente.setString(5, txtCilindros.getText());
+            cliente.setString(6, txtMotor.getText());
+            cliente.setString(7, txtPlaca.getText());
+            cliente.setString(8, txtCapacidad.getText());               
+            cliente.setString(9, txtConductor.getText());            
+            cliente.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos Guardados"); 
+        } catch (SQLException ex) {
+            Logger.getLogger(Vehiculo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }  
+    }      
+    public void actualizarVehiculo(){            
+        if (("".equals(txtNumVehiculo.getText()))||("".equals(txtMarca.getText()))||("".equals(txtModelo.getText()))||
+            ("".equals(txtColor.getText()))||("".equals(txtCilindros.getText()))
+            ||("".equals(txtMotor.getText()))||("".equals(txtPlaca.getText()))
+            ||("".equals(txtCapacidad.getText()))||("".equals(txtConductor.getText()))){
+            JOptionPane.showMessageDialog(null, "Hacen falta datos, por favor ingreselos");        
+        }else{     
+        try {
+            PreparedStatement cliente = con.prepareStatement("call mydb.ActualizarVehiculo(?,?,?,?,?,?,?,?,?)");
+            cliente.setString(1, txtNumVehiculo.getText());
+            cliente.setString(2, txtMarca.getText());
+            cliente.setString(3, txtModelo.getText());
+            cliente.setString(4, txtColor.getText());
+            cliente.setString(5, txtCilindros.getText());
+            cliente.setString(6, txtMotor.getText());
+            cliente.setString(7, txtPlaca.getText());
+            cliente.setString(8, txtCapacidad.getText());               
+            cliente.setString(9, txtConductor.getText());            
+            cliente.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Datos Guardados"); 
+        } catch (SQLException ex) {
+            Logger.getLogger(Vehiculo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }  
+    }    
+    
+    public void eliminarVehiculo(){
+        int fila = tblVehiculos.getSelectedRow();
+        String valor = tblVehiculos.getValueAt(fila, 0).toString();
+        if(fila>=0){
+            try {
+                PreparedStatement pps = con.prepareStatement("DELETE FROM vehiculo WHERE idVehiculo='"+valor+"'");
+                pps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Datos Eliminar");                       
+            } catch (SQLException ex) {
+                Logger.getLogger(Vehiculo.class.getName()).log(Level.SEVERE, null, ex);
+            }             
+        }
+    }
+
 }
