@@ -13,6 +13,7 @@ import static Interfaz.Clientes.txtBoleto;
 import static Interfaz.Clientes.txtTelefono;
 import static Interfaz.Clientes.txtMunicipio;
 import static Interfaz.Clientes.txtDireccion;
+import static Interfaz.Clientes.txtCaserio;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -137,7 +138,7 @@ public class Cliente {
             JOptionPane.showMessageDialog(null, "Hacen falta datos, por favor ingreselos");        
         }else{     
         try {
-            PreparedStatement cliente = con.prepareStatement("call mydb.InsertarCliente(?,?,?,?,?,?,?,?,null,?)");
+            PreparedStatement cliente = con.prepareStatement("call mydb.InsertarCliente(?,?,?,?,?,?,?,?,?,?)");
             cliente.setString(1, txtNumCliente.getText());
             cliente.setString(2, txtNombres.getText());
             cliente.setString(3, txtApellidos.getText());
@@ -146,8 +147,13 @@ public class Cliente {
             cliente.setString(6, txtTelefono.getText());
             cliente.setString(7, txtDpi.getText());
             cliente.setString(8, txtBoleto.getText());   
-            //cliente.setString(9, txtCaserio.getText());
-            cliente.setString(9, txtAldea.getText());            
+            if(txtCaserio.getText()==""){
+                cliente.setString(9, null);
+            }else{
+                cliente.setString(9, txtCaserio.getText());
+            }
+            
+            cliente.setString(10, txtAldea.getText());            
             cliente.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Guardados"); 
         } catch (SQLException ex) {
@@ -178,7 +184,7 @@ public class Cliente {
             JOptionPane.showMessageDialog(null, "Hacen falta datos, por favor ingreselos");        
         }else{     
         try {
-            PreparedStatement cliente = con.prepareStatement("call mydb.ActualizarCliente(?,?,?,?,?,?,?,?,null,?)");
+            PreparedStatement cliente = con.prepareStatement("call mydb.ActualizarCliente(?,?,?,?,?,?,?,?,?,?)");
             cliente.setString(1, txtNumCliente.getText());
             cliente.setString(2, txtNombres.getText());
             cliente.setString(3, txtApellidos.getText());
@@ -187,13 +193,38 @@ public class Cliente {
             cliente.setString(6, txtTelefono.getText());
             cliente.setString(7, txtDpi.getText());
             cliente.setString(8, txtBoleto.getText());   
-            //cliente.setString(9, txtCaserio.getText());
-            cliente.setString(9, txtAldea.getText());            
+            if(txtCaserio.getText()==""){
+                cliente.setString(9, "null");
+            }else{
+                cliente.setString(9, txtCaserio.getText());
+            }
+            
+            cliente.setString(10, txtAldea.getText());            
             cliente.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Actualizados"); 
         } catch (SQLException ex) {
             Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
+    }
+    public int ultimoID(){
+        int idC = 0;
+        try{        
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT MAX(idCliente) AS id FROM Cliente");
+            modeloMCliente = new DefaultTableModel(null, columnas){
+            @Override
+                public boolean isCellEditable (int fila, int columna) {
+                    return false;
+                }
+            };
+            while(rs.next()){
+                idC= rs.getInt("id");
+            }         
+            rs.close();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);      
+        } 
+        return idC;
     }
 }

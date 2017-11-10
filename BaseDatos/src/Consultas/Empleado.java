@@ -144,4 +144,25 @@ public class Empleado {
         }
         }
     }
+    
+    public int ultimoID(){
+        int idE = 0;
+        try{        
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT MAX(idEmpleado) AS id FROM Empleado");
+            modeloEmp = new DefaultTableModel(null, columnas){
+            @Override
+                public boolean isCellEditable (int fila, int columna) {
+                    return false;
+                }
+            };
+            while(rs.next()){
+                idE= rs.getInt("id");
+            }         
+            rs.close();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);      
+        } 
+        return idE;
+    }
 }

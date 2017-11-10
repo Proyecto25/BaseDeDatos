@@ -4,7 +4,9 @@ import Consultas.Cliente;
 import Consultas.Pagos;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.JTableHeader;
 
@@ -97,6 +99,7 @@ public class Pago extends javax.swing.JInternalFrame {
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(60, 0), new java.awt.Dimension(60, 32767));
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 32767));
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(50, 32767));
+        jButton1 = new javax.swing.JButton();
         panelDetalles = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblComprobante = new javax.swing.JTable();
@@ -237,7 +240,6 @@ public class Pago extends javax.swing.JInternalFrame {
         rbDpi.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         rbDpi.setText("DPI");
         rbDpi.setToolTipText("Buscar Cliente por DPI");
-        rbDpi.setOpaque(false);
         rbDpi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rbDpiMouseClicked(evt);
@@ -247,7 +249,6 @@ public class Pago extends javax.swing.JInternalFrame {
         rbNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         rbNombre.setText("Nombre");
         rbNombre.setToolTipText("Buscar Cliente por Nombre");
-        rbNombre.setOpaque(false);
         rbNombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rbNombreMouseClicked(evt);
@@ -291,7 +292,6 @@ public class Pago extends javax.swing.JInternalFrame {
         rbApellido.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         rbApellido.setText("Apellido");
         rbApellido.setToolTipText("Buscar Cliente por Apellido");
-        rbApellido.setOpaque(false);
         rbApellido.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rbApellidoMouseClicked(evt);
@@ -659,7 +659,6 @@ public class Pago extends javax.swing.JInternalFrame {
 
         rbMesCorriente.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         rbMesCorriente.setText("Mes Corriente");
-        rbMesCorriente.setOpaque(false);
         rbMesCorriente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rbMesCorrienteMouseClicked(evt);
@@ -668,7 +667,6 @@ public class Pago extends javax.swing.JInternalFrame {
 
         rbMesesDeuda.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         rbMesesDeuda.setText("Meses en deuda");
-        rbMesesDeuda.setOpaque(false);
         rbMesesDeuda.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 rbMesesDeudaItemStateChanged(evt);
@@ -682,7 +680,6 @@ public class Pago extends javax.swing.JInternalFrame {
 
         rbVariosMeses.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         rbVariosMeses.setText("Varios Meses");
-        rbVariosMeses.setOpaque(false);
         rbVariosMeses.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 rbVariosMesesItemStateChanged(evt);
@@ -721,11 +718,28 @@ public class Pago extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Eras Medium ITC", 1, 14)); // NOI18N
+        jButton1.setText("Registrar Pago");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelVerConceptoLayout = new javax.swing.GroupLayout(panelVerConcepto);
         panelVerConcepto.setLayout(panelVerConceptoLayout);
         panelVerConceptoLayout.setHorizontalGroup(
             panelVerConceptoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(panelVerConceptoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelVerConceptoLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(rbMesCorriente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbVariosMeses)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbMesesDeuda)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(filler4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelVerConceptoLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(panelVerConceptoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblDescripcion, javax.swing.GroupLayout.Alignment.LEADING)
@@ -751,14 +765,9 @@ public class Pago extends javax.swing.JInternalFrame {
                                 .addComponent(filler6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelVerConceptoLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(rbMesCorriente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rbVariosMeses)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbMesesDeuda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(filler4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(107, 107, 107)
+                .addComponent(jButton1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelVerConceptoLayout.setVerticalGroup(
             panelVerConceptoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -793,7 +802,9 @@ public class Pago extends javax.swing.JInternalFrame {
                         .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Monto))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(20, 20, 20))
         );
 
         panelPrin.add(panelVerConcepto);
@@ -861,7 +872,7 @@ public class Pago extends javax.swing.JInternalFrame {
             panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelContenidoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelPrin, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
+                .addComponent(panelPrin, javax.swing.GroupLayout.PREFERRED_SIZE, 717, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelContenidoLayout.setVerticalGroup(
@@ -1135,6 +1146,14 @@ public class Pago extends javax.swing.JInternalFrame {
         this.btnVerMeses.setVisible(false);
     }//GEN-LAST:event_rbMesesDeudaMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (JOptionPane.showConfirmDialog(this, "¿Desea cancelar los cambios?", "Cerrar", JOptionPane.YES_NO_OPTION, 0,
+            new ImageIcon(getClass().getResource("/Imagenes/modificar.png"))) == JOptionPane.YES_OPTION) {
+            //Registrar pago
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void itemsMeses(JCheckBoxMenuItem cbx){
         if(cbx.getState()==true){
             this.cbxMeses.addItem(cbx.getText());
@@ -1171,6 +1190,7 @@ public class Pago extends javax.swing.JInternalFrame {
     private javax.swing.Box.Filler filler7;
     private javax.swing.Box.Filler filler8;
     private javax.swing.Box.Filler filler9;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
