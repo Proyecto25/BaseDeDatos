@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9df7520e-b116-47de-8372-8eefb4e0ded2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     pago.`idPago` AS pago_idPago,
+     pago.`Mes_Pago` AS pago_Mes_Pago,
+     pago.`Hora` AS pago_Hora,
+     pago.`Descripcion` AS pago_Descripcion,
+     tipopago.`Tipo` AS tipopago_Tipo,
+     empleado.`Nombres` AS empleado_Nombres,
+     cliente.`Nombres` AS cliente_Nombres,
+     pago.`Num_Comprobante` AS pago_Num_Comprobante
+FROM
+     `tipopago` tipopago INNER JOIN `pago` pago ON tipopago.`idTipoPago` = pago.`TipoPago_idTipoPago`
+     INNER JOIN `empleado` empleado ON pago.`Empleado_idEmpleado` = empleado.`idEmpleado`
+     INNER JOIN `cliente` cliente ON pago.`Cliente_idCliente` = cliente.`idCliente`]]>
+	</queryString>
+	<field name="pago_idPago" class="java.lang.Integer"/>
+	<field name="pago_Mes_Pago" class="java.lang.String"/>
+	<field name="pago_Hora" class="java.sql.Time"/>
+	<field name="pago_Descripcion" class="java.lang.String"/>
+	<field name="tipopago_Tipo" class="java.lang.String"/>
+	<field name="empleado_Nombres" class="java.lang.String"/>
+	<field name="cliente_Nombres" class="java.lang.String"/>
+	<field name="pago_Num_Comprobante" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="66" backcolor="#000000" uuid="2cb5695a-f618-41bc-8c07-be929b2a3610"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="fe5c6da6-b2f9-4baf-8b56-8c53d9889e8f"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Pagos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="370" y="37" width="316" height="29" uuid="e95528b7-ff9f-4ceb-a29e-1818fb92a758"/>
+					<textElement textAlignment="Right">
+						<font size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Registro de Pagos]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="802" height="32" forecolor="#000000" backcolor="#CC0000" uuid="3767bfeb-e1f5-416d-a42f-146da14b9378"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="653" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="2bb7ecb1-7b8b-4987-9bac-c2c01570068d"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="33" height="18" forecolor="#000000" uuid="9061ca02-17da-4b83-87d8-d8c378bad17a"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="33" y="0" width="99" height="18" forecolor="#000000" uuid="c9ea5f46-34a3-4782-aa20-cb455f117f18"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Mes de Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="132" y="0" width="78" height="18" forecolor="#000000" uuid="6420a197-9132-4e2e-88d6-63a3948ad3cb"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Hora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="210" y="0" width="99" height="18" forecolor="#000000" uuid="cdcb8b3b-07bd-43d5-9932-8e1ae8872ff8"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="309" y="0" width="99" height="18" forecolor="#000000" uuid="a80a1297-a78d-45a1-b5fb-82c4632db114"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="408" y="0" width="126" height="18" forecolor="#000000" uuid="1e6e3fbc-0cdd-44ca-b45b-c9bb318442f6"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre de Empleado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="534" y="0" width="119" height="18" forecolor="#000000" uuid="ef5053f4-464f-4ef2-a502-c91007df7e29"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nombre de Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="653" y="0" width="149" height="18" forecolor="#000000" uuid="1803f3f8-3af1-451c-af1c-ca20597fd492"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Numero de comprobante]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="8bdc2b7f-eb16-4488-82ff-a57e81469df9"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="33" height="18" uuid="33701322-fb89-40e4-b823-f9dbb7b120f9"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pago_idPago}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="33" y="0" width="99" height="18" uuid="20205a6c-cabb-4aca-84fe-d53d46ffd994"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pago_Mes_Pago}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="132" y="0" width="78" height="18" uuid="5c0968eb-2bc9-4607-afda-dee5809e9793"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pago_Hora}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="210" y="0" width="99" height="18" uuid="a621562a-45a4-42e1-815c-88b69aee1789"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pago_Descripcion}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="309" y="0" width="99" height="18" uuid="7e7820eb-a436-40ec-ab92-13eb01cee48f"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tipopago_Tipo}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="408" y="0" width="126" height="18" uuid="33888d78-951c-4d29-a9ac-781f00e69e67"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{empleado_Nombres}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="534" y="0" width="119" height="18" uuid="91710a6e-8ab1-4251-b09f-7ade00bd5c2c"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{cliente_Nombres}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="653" y="0" width="144" height="18" uuid="c6d4fd67-c5b1-4366-a6e8-71a22a79beeb"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pago_Num_Comprobante}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="13885bc8-6dda-43ac-b88e-9fc3b0ea077c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="134ee1f5-6b02-4add-b895-3cf08d6eb7b2"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="ec4ed0b8-5de4-46d9-b335-63413ed1a7ed"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="a5df7537-32f0-4592-8292-fb594feba666"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="3daec9cd-5f6e-405f-8cd6-dd90fb1dc299"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -43,7 +43,6 @@ public class Principal extends javax.swing.JFrame {
         btnPagos.setSize(170, 110);
         btnClientes.setSize(170, 110);
         btnEmpleados.setSize(170, 110);
-        btnTraslados.setSize(170, 110);
         btnInventario.setSize(170, 110);
         btnVehiculos.setSize(170, 110);
         panelOpciones1.setSize(170,110);
@@ -59,7 +58,6 @@ public class Principal extends javax.swing.JFrame {
         imagen[8] = new ImageIcon(getClass().getResource("/Imagenes/13.iconoCerrarSesion.png"));
         red.escalarImagen(btnPagos, imagen[0]);
         red.escalarImagen(btnEmpleados, imagen[1]);
-        red.escalarImagen(btnTraslados, imagen[2]);
         red.escalarImagen(btnInventario, imagen[3]);
         red.escalarImagen(btnVehiculos, imagen[4]);
         red.escalarImagen(btnIconoUsuario, imagen[5]);
@@ -89,7 +87,6 @@ public class Principal extends javax.swing.JFrame {
         btnPagos = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
         btnEmpleados = new javax.swing.JButton();
-        btnTraslados = new javax.swing.JButton();
         btnInventario = new javax.swing.JButton();
         btnVehiculos = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
@@ -317,40 +314,6 @@ public class Principal extends javax.swing.JFrame {
         });
         panelOpciones2.add(btnEmpleados);
 
-        btnTraslados.setBackground(new java.awt.Color(54, 68, 97));
-        btnTraslados.setToolTipText("Gestionar Traslados de Basura");
-        btnTraslados.setBorder(null);
-        btnTraslados.setBorderPainted(false);
-        btnTraslados.setContentAreaFilled(false);
-        btnTraslados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTraslados.setFocusPainted(false);
-        btnTraslados.setMaximumSize(new java.awt.Dimension(70, 70));
-        btnTraslados.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnTrasladosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnTrasladosMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnTrasladosMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnTrasladosMouseReleased(evt);
-            }
-        });
-        btnTraslados.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                btnTrasladosComponentResized(evt);
-            }
-        });
-        btnTraslados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTrasladosActionPerformed(evt);
-            }
-        });
-        panelOpciones2.add(btnTraslados);
-
         btnInventario.setBackground(new java.awt.Color(54, 68, 97));
         btnInventario.setToolTipText("Gestionar Inventario");
         btnInventario.setBorder(null);
@@ -543,26 +506,6 @@ public class Principal extends javax.swing.JFrame {
         red.escalarImagen(btnEmpleados,new ImageIcon(getClass().getResource("/Imagenes/06.icono_btn_empleados.png")));
     }//GEN-LAST:event_btnEmpleadosComponentResized
 
-    private void btnTrasladosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrasladosMouseEntered
-        red.escalarImagen2(btnTraslados,new ImageIcon(getClass().getResource("/Imagenes/07.icono_btn_traslados.png")));
-    }//GEN-LAST:event_btnTrasladosMouseEntered
-
-    private void btnTrasladosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrasladosMouseExited
-        red.escalarImagen(btnTraslados,new ImageIcon(getClass().getResource("/Imagenes/07.icono_btn_traslados.png")));
-    }//GEN-LAST:event_btnTrasladosMouseExited
-
-    private void btnTrasladosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrasladosMousePressed
-        this.btnTraslados.setOpaque(true);
-    }//GEN-LAST:event_btnTrasladosMousePressed
-
-    private void btnTrasladosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrasladosMouseReleased
-        this.btnTraslados.setOpaque(false);
-    }//GEN-LAST:event_btnTrasladosMouseReleased
-
-    private void btnTrasladosComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_btnTrasladosComponentResized
-        red.escalarImagen(btnTraslados,new ImageIcon(getClass().getResource("/Imagenes/07.icono_btn_traslados.png")));
-    }//GEN-LAST:event_btnTrasladosComponentResized
-
     private void btnInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseEntered
         red.escalarImagen2(btnInventario,new ImageIcon(getClass().getResource("/Imagenes/08.icono_btn_inventario.png")));
     }//GEN-LAST:event_btnInventarioMouseEntered
@@ -645,16 +588,6 @@ public class Principal extends javax.swing.JFrame {
         this.vehiculos.setVisible(false);
         this.mostrarInternal(empleados);
     }//GEN-LAST:event_btnEmpleadosActionPerformed
-
-    private void btnTrasladosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrasladosActionPerformed
-        this.pago.setVisible(false);
-        this.empleados.setVisible(false);
-        this.inventario.setVisible(false);
-        this.reportes.setVisible(false);
-        this.clientes.setVisible(false);
-        this.vehiculos.setVisible(false);
-        this.mostrarInternal(traslados);
-    }//GEN-LAST:event_btnTrasladosActionPerformed
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
         this.pago.setVisible(false);
@@ -807,7 +740,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btnInventario;
     private javax.swing.JButton btnPagos;
     private javax.swing.JButton btnReportes;
-    private javax.swing.JButton btnTraslados;
     private javax.swing.JButton btnVehiculos;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel lblCerrarSesion;

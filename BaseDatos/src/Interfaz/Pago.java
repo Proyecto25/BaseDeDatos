@@ -1132,7 +1132,7 @@ public class Pago extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rbMesesDeudaMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (JOptionPane.showConfirmDialog(this, "¿Desea cancelar los cambios?", "Cerrar", JOptionPane.YES_NO_OPTION, 0,
+        if (JOptionPane.showConfirmDialog(this, "¿Desea ingresar los cambios?", "Cerrar", JOptionPane.YES_NO_OPTION, 0,
             new ImageIcon(getClass().getResource("/Imagenes/modificar.png"))) == JOptionPane.YES_OPTION) {
             //Registrar pago
             Date sistemaHora = new Date();
@@ -1147,8 +1147,7 @@ public class Pago extends javax.swing.JInternalFrame {
             if(cbxConcepto.getSelectedIndex()==1){
                 pg.pagarIns(Integer.toString(pg.numPago()+1), "A", Integer.toString(pg.numPago()+1),"Inscripción" , 
                         MesCorriente, this.lblFecha.getText(), hora, "2", Integer.toString(pg.idCli(this.txtDpi.getText())));
-            }
-            
+            }            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

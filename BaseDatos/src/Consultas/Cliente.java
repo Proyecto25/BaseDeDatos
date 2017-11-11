@@ -184,7 +184,7 @@ public class Cliente {
             JOptionPane.showMessageDialog(null, "Hacen falta datos, por favor ingreselos");        
         }else{     
         try {
-            PreparedStatement cliente = con.prepareStatement("call mydb.ActualizarCliente(?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement cliente = con.prepareStatement("call mydb.ActualizarCliente(?,?,?,?,?,?,?,?,null,?)");
             cliente.setString(1, txtNumCliente.getText());
             cliente.setString(2, txtNombres.getText());
             cliente.setString(3, txtApellidos.getText());
@@ -193,13 +193,7 @@ public class Cliente {
             cliente.setString(6, txtTelefono.getText());
             cliente.setString(7, txtDpi.getText());
             cliente.setString(8, txtBoleto.getText());   
-            if(txtCaserio.getText()==""){
-                cliente.setString(9, "null");
-            }else{
-                cliente.setString(9, txtCaserio.getText());
-            }
-            
-            cliente.setString(10, txtAldea.getText());            
+            cliente.setString(9, txtAldea.getText());            
             cliente.executeUpdate();
             JOptionPane.showMessageDialog(null, "Datos Actualizados"); 
         } catch (SQLException ex) {
