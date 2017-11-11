@@ -329,7 +329,7 @@ public class Login extends javax.swing.JFrame {
                 usuario = rs.getString("Usuario");
                 pass = rs.getString("Contraseña");
                 passDesenc = Encriptado.desencripta(llave, vi,pass);
-                JOptionPane.showMessageDialog(null, "Usuario y contraseña correctos\nEncriptado: "+pass+"\nDesenc: "+passDesenc);
+                JOptionPane.showMessageDialog(null, "Usuario y contraseña correctos");
                 pantalla = new Principal(usuario);
                 pantalla.setLocationRelativeTo(null);
                 pantalla.setVisible(true);

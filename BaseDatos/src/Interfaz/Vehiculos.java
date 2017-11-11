@@ -63,8 +63,9 @@ public class Vehiculos extends javax.swing.JInternalFrame {
         lblCilindros = new javax.swing.JLabel();
         txtCilindros = new javax.swing.JTextField();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
-        lblPlaca1 = new javax.swing.JLabel();
         txtConductor = new javax.swing.JTextField();
+        lblPlaca1 = new javax.swing.JLabel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(20, 32767));
 
         setBackground(new java.awt.Color(144, 144, 144));
         setBorder(null);
@@ -386,7 +387,7 @@ public class Vehiculos extends javax.swing.JInternalFrame {
                             .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblEdad)))
                     .addComponent(btnConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelDet2.add(panelCond, java.awt.BorderLayout.CENTER);
@@ -455,12 +456,12 @@ public class Vehiculos extends javax.swing.JInternalFrame {
         txtCilindros.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtCilindros.setForeground(new java.awt.Color(52, 52, 52));
 
-        lblPlaca1.setFont(new java.awt.Font("Eras Medium ITC", 1, 16)); // NOI18N
-        lblPlaca1.setText("Conductor");
-
         txtConductor.setEditable(false);
         txtConductor.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtConductor.setForeground(new java.awt.Color(52, 52, 52));
+
+        lblPlaca1.setFont(new java.awt.Font("Eras Medium ITC", 1, 16)); // NOI18N
+        lblPlaca1.setText("No. Conductor");
 
         javax.swing.GroupLayout panelDetallesLayout = new javax.swing.GroupLayout(panelDetalles);
         panelDetalles.setLayout(panelDetallesLayout);
@@ -475,13 +476,14 @@ public class Vehiculos extends javax.swing.JInternalFrame {
                     .addComponent(lblPlaca)
                     .addComponent(lblPlaca1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCilindros, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                    .addComponent(txtModelo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNumVehiculo, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPlaca)
+                    .addComponent(txtConductor, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelDetallesLayout.createSequentialGroup()
-                        .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtCilindros, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                            .addComponent(txtModelo, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNumVehiculo, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPlaca))
                         .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelDetallesLayout.createSequentialGroup()
                                 .addGap(26, 26, 26)
@@ -500,32 +502,19 @@ public class Vehiculos extends javax.swing.JInternalFrame {
                             .addComponent(txtCapacidad)
                             .addComponent(txtMotor, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelDet2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, Short.MAX_VALUE)
-                        .addGap(35, 35, 35))
+                        .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelDetallesLayout.createSequentialGroup()
-                        .addComponent(txtConductor, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(353, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(filler1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelDet2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, Short.MAX_VALUE)
+                .addGap(35, 35, 35))
         );
         panelDetallesLayout.setVerticalGroup(
             panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelDetallesLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelDetallesLayout.createSequentialGroup()
-                        .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelDet2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelDetallesLayout.createSequentialGroup()
-                                .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblMarca)
-                                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblColor)
-                                    .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelDetallesLayout.createSequentialGroup()
                         .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelDetallesLayout.createSequentialGroup()
@@ -550,11 +539,29 @@ public class Vehiculos extends javax.swing.JInternalFrame {
                             .addComponent(txtCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCapacidad)
                             .addComponent(lblPlaca))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPlaca1)
-                            .addComponent(txtConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 31, Short.MAX_VALUE))))
+                            .addComponent(txtConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPlaca1))
+                        .addGap(0, 12, Short.MAX_VALUE))
+                    .addGroup(panelDetallesLayout.createSequentialGroup()
+                        .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelDet2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panelDetallesLayout.createSequentialGroup()
+                                .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panelDetallesLayout.createSequentialGroup()
+                                        .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lblMarca)
+                                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(panelDetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(lblColor)
+                                            .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
 
         panelDet.setViewportView(panelDetalles);
@@ -774,6 +781,7 @@ public class Vehiculos extends javax.swing.JInternalFrame {
             this.txtNombres.setText((String) datos[8]);
             this.txtApellidos.setText((String) datos[9]);
             this.txtEdad.setText(Integer.toString(edad));
+            this.txtConductor.setText(Integer.toString(nVehiculo));
         }
     }
     void habilitarJtext(){
@@ -807,8 +815,11 @@ public class Vehiculos extends javax.swing.JInternalFrame {
         this.txtCilindros.setText("");
         this.txtMotor.setText("");
         this.txtPlaca.setText("");
-        this.txtCapacidad.setText("");
-        this.txtConductor.setText("");    
+        this.txtCapacidad.setText("");   
+        this.txtConductor.setText("");
+        this.txtNombres.setText("");
+        this.txtApellidos.setText("");
+        this.txtEdad.setText("");
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -819,6 +830,7 @@ public class Vehiculos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnConductor;
     private javax.swing.JButton btnEliminarEmp;
     private javax.swing.JButton btnModificarEmp;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblApellidos;

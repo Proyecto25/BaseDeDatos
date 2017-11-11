@@ -131,5 +131,24 @@ public class Vehiculo {
             }             
         }
     }
+    
+    public int numVehiculo(){
+        int nV = 0;
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("SELECT MAX(idVehiculo) AS id FROM Vehiculo");
+            while(rs.next()){
+                nV = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        if(nV==0){
+            nV=1;
+        }else{
+            nV+=1;
+        }
+        return nV;
+    }
 
 }

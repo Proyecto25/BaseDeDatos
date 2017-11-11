@@ -2,6 +2,7 @@ package Consultas;
 
 import ConexionBaseDatos.Conexion;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -49,6 +50,19 @@ public class Inventario2 {
             JOptionPane.showMessageDialog(null, e);      
         }  
         return mInv;
+    }
+    public void agregarInv(String id, String tipo, String descrip, String exis){
+        try{        
+            PreparedStatement inv = con.prepareStatement("INSERT INTO Producto VALUES(?,?,?,?)");
+            inv.setString(1, id);
+            inv.setString(2, tipo);
+            inv.setString(3, descrip);
+            inv.setString(4, exis);
+            JOptionPane.showMessageDialog(null, "Datos Guardados");
+            
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);      
+        } 
     }
     
     public int ultimoID(){

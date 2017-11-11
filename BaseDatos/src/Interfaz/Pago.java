@@ -3,12 +3,14 @@ package Interfaz;
 import Consultas.Cliente;
 import Consultas.Pagos;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.JTableHeader;
+
 
 public class Pago extends javax.swing.JInternalFrame {
     private String serie, numero;
@@ -79,9 +81,7 @@ public class Pago extends javax.swing.JInternalFrame {
         lblFecha = new javax.swing.JLabel();
         panelBoleta = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lblSerieBoleta = new javax.swing.JLabel();
         lblNumBoleta = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(40, 0), new java.awt.Dimension(40, 0), new java.awt.Dimension(40, 32767));
         filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(40, 0), new java.awt.Dimension(40, 0), new java.awt.Dimension(40, 32767));
         panelVerConcepto = new javax.swing.JPanel();
@@ -559,45 +559,28 @@ public class Pago extends javax.swing.JInternalFrame {
         jLabel1.setText("No.");
         jLabel1.setOpaque(true);
 
-        lblSerieBoleta.setBackground(new java.awt.Color(179, 179, 179));
-        lblSerieBoleta.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        lblSerieBoleta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSerieBoleta.setText("00001");
-        lblSerieBoleta.setOpaque(true);
-
         lblNumBoleta.setBackground(new java.awt.Color(179, 179, 179));
         lblNumBoleta.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         lblNumBoleta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNumBoleta.setText("000001");
         lblNumBoleta.setOpaque(true);
 
-        jLabel4.setBackground(new java.awt.Color(179, 179, 179));
-        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("-");
-        jLabel4.setOpaque(true);
-
         javax.swing.GroupLayout panelBoletaLayout = new javax.swing.GroupLayout(panelBoleta);
         panelBoleta.setLayout(panelBoletaLayout);
         panelBoletaLayout.setHorizontalGroup(
             panelBoletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
             .addGroup(panelBoletaLayout.createSequentialGroup()
-                .addComponent(lblSerieBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(lblNumBoleta, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblNumBoleta, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelBoletaLayout.setVerticalGroup(
             panelBoletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBoletaLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelBoletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSerieBoleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblNumBoleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(lblNumBoleta, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelDatosLayout = new javax.swing.GroupLayout(panelDatos);
@@ -898,8 +881,8 @@ public class Pago extends javax.swing.JInternalFrame {
         this.panelVerConcepto.setVisible(true);
         this.panelBuscarCliente.setVisible(false);
         this.rbMesCorriente.setSelected(true);
-        this.rbMesesDeuda.setSelected(false);
-        this.rbVariosMeses.setSelected(false);
+        this.rbMesesDeuda.setVisible(false);
+        this.rbVariosMeses.setVisible(false);
         JTableHeader th; 
         th = tablaBuscar.getTableHeader(); 
         th.setFont(new java.awt.Font("Eras Medium ITC", 1, 15)); 
@@ -925,6 +908,8 @@ public class Pago extends javax.swing.JInternalFrame {
             this.btnVerMeses.setVisible(false);
             this.txtMonto.setText(Float.toString(pg.inscripcion()));
         }
+        this.panelDetalles.setVisible(false);
+        this.lblNumBoleta.setText(Integer.toString(pg.numPago()));
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
@@ -1150,6 +1135,19 @@ public class Pago extends javax.swing.JInternalFrame {
         if (JOptionPane.showConfirmDialog(this, "¿Desea cancelar los cambios?", "Cerrar", JOptionPane.YES_NO_OPTION, 0,
             new ImageIcon(getClass().getResource("/Imagenes/modificar.png"))) == JOptionPane.YES_OPTION) {
             //Registrar pago
+            Date sistemaHora = new Date();
+            String pmAm = "hh:mm a";
+            SimpleDateFormat formato = new SimpleDateFormat(pmAm);
+            Calendar now = Calendar.getInstance();
+            String hora= (String.format(formato.format(sistemaHora), now));
+            if(cbxConcepto.getSelectedIndex()==0){
+                pg.pagarIns(Integer.toString(pg.numPago()+1), "A", Integer.toString(pg.numPago()+1),"Pago Mensual" , 
+                        MesCorriente, this.lblFecha.getText(), hora, "1", Integer.toString(pg.idCli(this.txtDpi.getText())));
+            }
+            if(cbxConcepto.getSelectedIndex()==1){
+                pg.pagarIns(Integer.toString(pg.numPago()+1), "A", Integer.toString(pg.numPago()+1),"Inscripción" , 
+                        MesCorriente, this.lblFecha.getText(), hora, "2", Integer.toString(pg.idCli(this.txtDpi.getText())));
+            }
             
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -1169,7 +1167,7 @@ public class Pago extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnVerMeses;
     private javax.swing.JCheckBoxMenuItem cbxAbril;
     private javax.swing.JCheckBoxMenuItem cbxAgosto;
-    private javax.swing.JComboBox<String> cbxConcepto;
+    public static javax.swing.JComboBox<String> cbxConcepto;
     private javax.swing.JCheckBoxMenuItem cbxDiciembre;
     private javax.swing.JCheckBoxMenuItem cbxEnero;
     private javax.swing.JCheckBoxMenuItem cbxFebrero;
@@ -1177,7 +1175,7 @@ public class Pago extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBoxMenuItem cbxJunio;
     private javax.swing.JCheckBoxMenuItem cbxMarzo;
     private javax.swing.JCheckBoxMenuItem cbxMayo;
-    private javax.swing.JComboBox<String> cbxMeses;
+    public static javax.swing.JComboBox<String> cbxMeses;
     private javax.swing.JCheckBoxMenuItem cbxNoviembre;
     private javax.swing.JCheckBoxMenuItem cbxOctubre;
     private javax.swing.JCheckBoxMenuItem cbxSeptiembre;
@@ -1193,7 +1191,6 @@ public class Pago extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
@@ -1207,8 +1204,7 @@ public class Pago extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblMes;
     private javax.swing.JLabel lblMunicipio;
     private javax.swing.JLabel lblNombres;
-    private javax.swing.JLabel lblNumBoleta;
-    private javax.swing.JLabel lblSerieBoleta;
+    public static javax.swing.JLabel lblNumBoleta;
     private javax.swing.JPanel panelBoleta;
     private javax.swing.JPanel panelBuscarCliente;
     private javax.swing.JLayeredPane panelCliente;
@@ -1234,7 +1230,7 @@ public class Pago extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCaserio;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtDpi;
-    private javax.swing.JTextField txtMonto;
+    public static javax.swing.JTextField txtMonto;
     private javax.swing.JTextField txtMunicipio;
     private javax.swing.JTextField txtNombres;
     // End of variables declaration//GEN-END:variables

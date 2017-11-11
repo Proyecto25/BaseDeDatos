@@ -178,6 +178,7 @@ public class Empleados extends javax.swing.JInternalFrame {
         btnCheck.setContentAreaFilled(false);
         btnCheck.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCheck.setFocusPainted(false);
+        btnCheck.setPreferredSize(new java.awt.Dimension(36, 36));
         btnCheck.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCheckMouseEntered(evt);
@@ -197,6 +198,7 @@ public class Empleados extends javax.swing.JInternalFrame {
         btnCancelar.setContentAreaFilled(false);
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.setFocusPainted(false);
+        btnCancelar.setPreferredSize(new java.awt.Dimension(36, 36));
         btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCancelarMouseEntered(evt);
@@ -217,6 +219,7 @@ public class Empleados extends javax.swing.JInternalFrame {
         btnCheck1.setContentAreaFilled(false);
         btnCheck1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCheck1.setFocusPainted(false);
+        btnCheck1.setPreferredSize(new java.awt.Dimension(36, 36));
         btnCheck1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCheck1MouseEntered(evt);
@@ -671,11 +674,14 @@ public class Empleados extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCheck1ActionPerformed
 
     private void btnAgregarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEmpActionPerformed
+        limpiar();
+        int idSig = Emp.ultimoID();
         this.btnCheck.setVisible(true);                      
         this.btnCancelar.setVisible(true);
         this.btnAgregarEmp.setVisible(false);
         this.btnModificarEmp.setVisible(false);
         this.btnEliminarEmp.setVisible(false);
+        this.txtNumEmp.setText(Integer.toString(idSig));
         habilitarJtext();  
     }//GEN-LAST:event_btnAgregarEmpActionPerformed
 
